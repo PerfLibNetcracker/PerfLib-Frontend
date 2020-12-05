@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+html, body {
+  margin: 0 auto; /*чтобы центрировать контент при превышении max-width*/
+  padding: 0 auto;
+  min-width: 900px;
+  max-width: 2000px;}
+body {
+  background-image: url(https://static.tildacdn.com/tild3963-3937-4131-b162-326561303962/7bfe3d635480975ab3fb.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;}

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksComponent } from './components/books/books.component';
+import { RouterModule } from '@angular/router'
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { BooksComponent } from './components/books/books.component';
     BooksComponent,
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule

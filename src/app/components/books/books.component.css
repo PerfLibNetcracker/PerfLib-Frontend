@@ -1,0 +1,29 @@
+.globalBookContainer {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 400px);
+  grid-gap: 30px;
+  justify-content: center;
+ }
+
+ .mainBooksContainer div {
+   padding-bottom:  8%;
+  }
+
+.book {text-align: center;}
+
+.book a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none; }
+
+.book a:hover {
+   transition: all 0.7s;
+  color: indigo; }
+
+.book img:hover {
+  -webkit-transform: scale(0.95);
+ -ms-transform: scale(0.95);
+ transform: scale(0.95);
+  opacity: 0.7;
+  cursor: pointer; }
