@@ -1,6 +1,10 @@
 # PerfLib
+Before build project you must install node.js (for using 'npm') [Source:](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+
+If you get exception: "An unhandled exception occurred: Cannot find module '@angular-devkit/build-angular/package.json", then do this command in CLI:
+`npm install --save-dev @angular-devkit/build-angular`.
 
 ## Development server
 
