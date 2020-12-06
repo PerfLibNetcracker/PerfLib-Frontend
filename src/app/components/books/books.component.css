@@ -10,7 +10,9 @@
    padding-bottom:  8%;
   }
 
-.book {text-align: center;}
+.book {
+  text-align: center;
+  display: grid; }
 
 .book a {
   color: black;
