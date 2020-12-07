@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {Book} from './book';
+import {BooksService} from './books.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
 
-  constructor() { }
+  books: Observable<Book[]>;
+
+  constructor(private booksService: BooksService, private router: Router) { }
 
   ngOnInit(): void {
+    this.reloadData();
   }
 
+  // tslint:disable-next-line:typedef
+  reloadData() {
+    this.books = this.booksService.getBooksList();
+  }
 }

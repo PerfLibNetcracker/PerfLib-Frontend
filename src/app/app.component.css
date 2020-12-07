@@ -73,10 +73,9 @@ ul a:hover {
   footer {height: 150px; max-height: 150px;}
   footer .main-footer{ background: #65837B; opacity: .95}
   footer ul{ padding-left: 0; list-style: none; text-align: center;}
-
+.col {margin-top: 40px;}
   .footer-copyright {opacity: .9; background: #222;}
   .footer-copyright p {color: lightgrey; margin: 0 auto; text-align: center;}
-
   .widget {margin-top: 20px; margin-bottom: 20px;}
   .widget li a{ color: white; text-decoration: none;}
 

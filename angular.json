@@ -121,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "PerfLib"
+  "defaultProject": "PerfLib",
+  "cli": {
+    "analytics": false
+  }
 }
