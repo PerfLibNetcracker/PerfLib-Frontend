@@ -7,9 +7,11 @@ ul a:hover {
 .dropdown-menu {
   text-align: center;
   background: white;
-  opacity: .8;
+  opacity: .9;
   left: auto;
   right: 0;}
+  .dropdown-menu input {border: none;}
+  .dropdown-menu input:hover {border: 1px solid grey;}
 
 .dropdown {margin-left: 1%;}
 
@@ -24,8 +26,6 @@ ul a:hover {
   background: #86bf9f; }
 
 #submitSearchButton:focus {outline: none;}
-
-#authButton:focus {outline: none;}
 
 #searchInput  {
   opacity: .75;
@@ -54,6 +54,9 @@ ul a:hover {
   font-size: 120%;
   border-radius: 10%;
   font-weight: bold; }
+  #authButton img {background: inherit;}
+
+#authButton:focus {outline: none;}
 
 #authButton:hover {
   transition: all 0.7s;
