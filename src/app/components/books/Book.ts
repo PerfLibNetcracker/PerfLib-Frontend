@@ -3,6 +3,7 @@ import {Genre} from './genre';
 
 export class Book {
   id: number;
+  urlimage: string;
   name: string;
   price: number;
   totalViews: number;
