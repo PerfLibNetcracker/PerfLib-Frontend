@@ -1,8 +1,19 @@
-<div  class="globalBookContainer">
-      <div *ngFor="let book of books | async" class="book" >
-        <img width="70%" height="120%" src="https://d2w9rnfcy7mm78.cloudfront.net/3401137/display_f636776b49109be08068df6291d0e491.jpg?1547419475?bc=1">
-        <br>
-        <a href="#">{{book.name}} Автор: {{book.author.fullName}} Цена:{{book.price}} Рейтинг: {{book.rating}}</a>
-      </div>
-      <br>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Выберете жанр
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <div *ngFor="let genre of genres | async" class="item-menu">
+      <a class="dropdown-item" href="#">{{genre.name}}</a>
+    </div>
   </div>
+</div>
+
+<div  class="globalBookContainer">
+    <div *ngFor="let book of books | async" class="book" >
+      <img width="50%" height="80%" src={{book.urlimage}} alt="Изображение книги">
+      <br>
+      <a href="#">{{book.name}} Автор: {{book.author.fullName}} Цена:{{book.price}} Рейтинг: {{book.rating}}</a>
+    </div>
+    <br>
+</div>

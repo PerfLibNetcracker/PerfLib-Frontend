@@ -7,11 +7,15 @@ import {Observable} from 'rxjs';
 })
 export class BooksService {
 
-  private baseUrl = 'http://localhost:8080/api/service/search/find-all';
+  private URL_findAllBooks = 'http://localhost:8080/api/service/search/find-all';
+  private URL_findAllGenres = 'http://localhost:8080/api/service/search/find-all-genres'
 
   constructor(private http: HttpClient) { }
 
   getBooksList(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return this.http.get(this.URL_findAllBooks);
+  }
+  getGenresList(): Observable<any> {
+    return this.http.get(this.URL_findAllGenres);
   }
 }
