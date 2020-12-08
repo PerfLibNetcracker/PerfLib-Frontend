@@ -1,6 +1,6 @@
 .globalBookContainer {
   margin-top: 50px;
-  display: grid;
+  display: inline-block;
   grid-template-columns: repeat(4, 400px);
   grid-gap: 30px;
   justify-content: center;
@@ -10,7 +10,9 @@
    padding-bottom:  8%;
   }
 
-.book {text-align: center;}
+.book {
+  text-align: center;
+}
 
 .book a {
   color: black;
