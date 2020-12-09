@@ -1,5 +1,5 @@
-import {Author} from './author';
-import {Genre} from './genre';
+import {Author} from './Author';
+import {Genre} from './Genre';
 
 export class Book {
 id: number;

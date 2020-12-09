@@ -11,9 +11,9 @@
 
 <div  class="globalBookContainer">
     <div *ngFor="let book of books | async" class="book" >
-      <img width="50%" height="80%" src={{book.urlimage}} alt="Изображение книги">
+      <a  [routerLink]="['/info-book', book.id]"> <img width="50%" height="100%" src={{book.urlimage}} alt="Изображение книги"></a>
       <br>
-      <a href="#">{{book.name}}, {{book.author.fullName}} <br>Цена: {{book.price}} рублей<br> <span style="color:indigo">Рейтинг: {{book.rating}}</span></a>
+      <a routerLink="/info-book">{{book.name}}, {{book.author.fullName}}</a>
     </div>
     <br>
 </div>

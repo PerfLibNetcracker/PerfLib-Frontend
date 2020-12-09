@@ -7,8 +7,12 @@ import {Observable} from 'rxjs';
 })
 export class BooksService {
 
+  // tslint:disable-next-line:variable-name
   private URL_findAllBooks = 'http://localhost:8080/api/service/search/find-all';
-  private URL_findAllGenres = 'http://localhost:8080/api/service/search/find-all-genres'
+  // tslint:disable-next-line:variable-name
+  private URL_findAllGenres = 'http://localhost:8080/api/service/search/find-all-genres';
+  // tslint:disable-next-line:variable-name
+  private URL_findBookById = 'http://localhost:8080/api/service/search/';
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +21,8 @@ export class BooksService {
   }
   getGenresList(): Observable<any> {
     return this.http.get(this.URL_findAllGenres);
+  }
+  getBookInfo(id: string): Observable<any> {
+    return this.http.get(this.URL_findBookById + id);
   }
 }

@@ -7,12 +7,14 @@ import { MainComponent } from './components/main/main.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksComponent } from './components/books/books.component';
 import { RouterModule } from '@angular/router';
+import { InfoBookComponent } from './components/info-book/info-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     BooksComponent,
+    InfoBookComponent,
   ],
   imports: [
     RouterModule,
