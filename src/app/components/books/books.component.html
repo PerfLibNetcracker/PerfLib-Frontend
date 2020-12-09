@@ -13,7 +13,7 @@
     <div *ngFor="let book of books | async" class="book" >
       <img width="50%" height="80%" src={{book.urlimage}} alt="Изображение книги">
       <br>
-      <a href="#">{{book.name}} Автор: {{book.author.fullName}} Цена:{{book.price}} Рейтинг: {{book.rating}}</a>
+      <a href="#">{{book.name}}, {{book.author.fullName}} <br>Цена: {{book.price}} рублей<br> <span style="color:indigo">Рейтинг: {{book.rating}}</span></a>
     </div>
     <br>
 </div>
