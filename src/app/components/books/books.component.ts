@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {BooksService} from '../../services/books.service';
 
@@ -12,7 +12,8 @@ export class BooksComponent implements OnInit {
   books: Observable<any>;
   genres: Observable<any>;
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService) {
+  }
 
   ngOnInit(): void {
     this.reloadData();

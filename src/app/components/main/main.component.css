@@ -5,10 +5,11 @@
   align-items: center;
 }
 
-.carousel{
+.carousel {
   height: 30px;
   width: 350px;
 }
+
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   width: 100%;

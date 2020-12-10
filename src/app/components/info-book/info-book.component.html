@@ -1,14 +1,14 @@
- <div *ngIf="book | async as bookinfo" class="book">
-    <div class="imageBook">
+<div *ngIf="book | async as bookinfo" class="book">
+  <div class="imageBook">
     <img src={{bookinfo.urlimage}} alt="Изображение книги">
-    </div>
-    <div class="text">
+  </div>
+  <div class="text">
     <a>Название книги: {{bookinfo.name}}</a>
     <a>Цена книги: {{bookinfo.price}}</a>
     <a>Эту книгу просмотрели: {{bookinfo.totalViews}} раз</a>
     <a>Рейтинг книги: {{bookinfo.rating}}</a>
     <a>Автор книги: {{bookinfo.author.fullName}}</a>
-    <a>Жанр  книги: {{bookinfo.genre.name}}</a>
-    </div>
+    <a>Жанр книги: {{bookinfo.genre.name}}</a>
   </div>
+</div>
 

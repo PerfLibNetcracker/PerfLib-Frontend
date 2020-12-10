@@ -3,7 +3,8 @@
   height: calc(100vh - 254px);
   display: grid;
   grid-template-columns: calc(50% - 10px) calc(50% - 10px);
-  gap: 20px;}
+  gap: 20px;
+}
 
 .imageBook {
   width: 100%;
@@ -16,6 +17,7 @@
   height: 400px;
   width: auto;
 }
+
 .text {
   width: 100%;
   display: flex;

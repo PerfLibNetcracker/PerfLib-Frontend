@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BooksService} from '../../services/books.service';
 import {Observable} from 'rxjs';
@@ -12,6 +12,7 @@ export class InfoBookComponent implements OnInit {
   book: Observable<any>;
 
   id: number;
+
   constructor(private activateRoute: ActivatedRoute, private booksService: BooksService) {
     this.id = activateRoute.snapshot.params.id;
   }

@@ -1,5 +1,5 @@
 ul a:hover {
-  color:#86bf9f !important;
+  color: #86bf9f !important;
   font-weight: 500;
 }
 
@@ -7,55 +7,97 @@ ul a:hover {
   border: none;
   border-radius: 20px;
   background: #86bf9f;
-  opacity: .7; }
+  opacity: .7;
+}
 
 #submitSearchButton:hover {
   opacity: .9;
-  background: #86bf9f; }
+  background: #86bf9f;
+}
 
-#submitSearchButton:focus {outline: none;}
+#submitSearchButton:focus {
+  outline: none;
+}
 
-#searchInput  {
+#searchInput {
   width: 47%;
   opacity: .75;
   background: inherit;
   border: none;
   border-radius: 10px;
-  outline: none; }
+  outline: none;
+}
 
 #searchInput:hover {
   opacity: .6;
   background: inherit;
   border: none;
-  outline: none; }
+  outline: none;
+}
 
 #searchInput::placeholder {
   color: black;
   text-align: center;
-  text-shadow: 0px 1px 1px #86bf9f; }
+  text-shadow: 0px 1px 1px #86bf9f;
+}
 
 #bucket {
   padding-right: 2%;
   transition: all 0.7s;
-  opacity: .9; }
+  opacity: .9;
+}
 
-#bucket:hover {opacity: .7; }
+#bucket:hover {
+  opacity: .7;
+}
 
-  nav {
+nav {
   background: white !important;
-  height: 70px !important;}
+  height: 70px !important;
+}
 
-  main {
-    min-height: calc(100vh - 254px);
-  }
+main {
+  min-height: calc(100vh - 254px);
+}
 
-  footer {height: 150px; max-height: 150px;}
-  footer .main-footer{ background: #65837B; opacity: .95}
-  footer ul{ padding-left: 0; list-style: none; text-align: center;}
-  .footer-copyright {opacity: .9; background: #222;}
-  .footer-copyright p {color: lightgrey; margin: 0 auto; text-align: center;}
-  .widget {margin-top: 20px; margin-bottom: 20px;}
-  .widget li a{ color: white; text-decoration: none;}
+footer {
+  height: 150px;
+  max-height: 150px;
+}
 
-  .typo-light h1, .typo-light h2, .typo-light h3, .typo-light h4, .typo-light h5,
-  .typo-light h6, .typo-light p, .typo-light div, .typo-light small{color: silver;}
+footer .main-footer {
+  background: #65837B;
+  opacity: .95
+}
+
+footer ul {
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.footer-copyright {
+  opacity: .9;
+  background: #222;
+}
+
+.footer-copyright p {
+  color: lightgrey;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.widget {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.widget li a {
+  color: white;
+  text-decoration: none;
+}
+
+.typo-light h1, .typo-light h2, .typo-light h3, .typo-light h4, .typo-light h5,
+.typo-light h6, .typo-light p, .typo-light div, .typo-light small {
+  color: silver;
+}

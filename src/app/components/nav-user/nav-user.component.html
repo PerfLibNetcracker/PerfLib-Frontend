@@ -2,8 +2,8 @@
   <button class="nav-text" id="authButton" type="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false" name="authButton"><img width="35px;" src="./assets/images/login.png"></button>
   <div class="dropdown-menu" aria-labelledby="authButton">
-  <div *ngIf="!isLoggedIn; then unauthorized else authorized"></div>
-  <ng-template #unauthorized>
+    <div *ngIf="!isLoggedIn; then unauthorized else authorized"></div>
+    <ng-template #unauthorized>
       <div class="form-group">
         <label for="authEmail">Email address:</label>
         <input style="opacity: .8;" type="email" class="form-control" id="authEmail" placeholder="@email">
@@ -16,11 +16,12 @@
               class="btn btn-primary">Sign in
       </button>
       <a href="" style="text-decoration: none; color: black;"> Регистрация </a>
-  </ng-template>
-  <ng-template #authorized>
-    <button (click)="logout()" style="margin-bottom: 5%; border: none; color: black; background: silver;" type="submit"
-            class="btn btn-primary">Sign out
-    </button>
-  </ng-template>
-</div>
+    </ng-template>
+    <ng-template #authorized>
+      <button (click)="logout()" style="margin-bottom: 5%; border: none; color: black; background: silver;"
+              type="submit"
+              class="btn btn-primary">Sign out
+      </button>
+    </ng-template>
+  </div>
 </div>

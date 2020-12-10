@@ -1,5 +1,6 @@
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
     Выберете жанр
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -9,11 +10,12 @@
   </div>
 </div>
 
-<div  class="globalBookContainer">
-    <div *ngFor="let book of books | async" class="book" >
-      <a  [routerLink]="['/info-book', book.id]"> <img width="50%" height="100%" src={{book.urlimage}} alt="Изображение книги"></a>
-      <br>
-      <a [routerLink]="['/info-book', book.id]">{{book.name}}, {{book.author.fullName}}</a>
-    </div>
+<div class="globalBookContainer">
+  <div *ngFor="let book of books | async" class="book">
+    <a [routerLink]="['/info-book', book.id]"> <img width="50%" height="100%" src={{book.urlimage}}
+                                                    alt="Изображение книги"></a>
     <br>
+    <a [routerLink]="['/info-book', book.id]">{{book.name}}, {{book.author.fullName}}</a>
+  </div>
+  <br>
 </div>

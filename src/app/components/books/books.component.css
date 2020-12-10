@@ -2,33 +2,40 @@
   padding-top: 30px;
   text-align: center;
 }
+
 .dropdown button {
   color: black;
-  background: lightgrey;}
+  background: lightgrey;
+}
 
 .globalBookContainer {
   height: 100%;
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(4, 350px);
-  justify-content: center;}
+  justify-content: center;
+}
 
 .book {
   text-align: center;
-  padding-bottom: 50px;}
+  padding-bottom: 50px;
+}
 
 .book a {
   color: black;
   font-weight: bold;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .book a:hover {
-   transition: all 0.7s;
-  color: indigo; }
+  transition: all 0.7s;
+  color: indigo;
+}
 
 .book img:hover {
--webkit-transform: scale(0.95);
--ms-transform: scale(0.95);
-transform: scale(0.95);
-opacity: 0.7;
-cursor: pointer; }
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  opacity: 0.7;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService, User} from '../../services/auth.service';
+
 @Component({
   selector: 'app-nav-user',
   templateUrl: './nav-user.component.html',
@@ -9,7 +10,10 @@ export class NavUserComponent implements OnInit {
 
   isLoggedIn: boolean;
 
-  constructor(private authService: AuthService) {console.log('Loggin:', authService.isLoggedIn); }
+  constructor(private authService: AuthService) {
+    console.log('Loggin:', authService.isLoggedIn);
+  }
+
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe(
       next => {
@@ -18,6 +22,7 @@ export class NavUserComponent implements OnInit {
       }
     );
   }
+
   logout(): void {
     this.authService.logout();
   }
