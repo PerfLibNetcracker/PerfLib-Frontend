@@ -1,0 +1,29 @@
+.dropdown-menu {
+  text-align: center;
+  background: white;
+  opacity: .9;
+  left: auto;
+  right: 0;}
+
+.dropdown-menu input {border: none;}
+
+.dropdown-menu input:hover {border: 1px solid grey;}
+
+#authButton  {
+  background: inherit;
+  border: none;
+  opacity: .8;
+  color: black;
+  width: 5%;
+  font-size: 120%;
+  border-radius: 10%;
+  font-weight: bold; }
+
+#authButton img {background: inherit;}
+
+#authButton:focus {outline: none;}
+
+#authButton:hover {
+  transition: all 0.7s;
+  opacity: 1;
+  color: #86bf9f; }

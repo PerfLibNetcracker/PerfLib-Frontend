@@ -13,7 +13,7 @@
     <div *ngFor="let book of books | async" class="book" >
       <a  [routerLink]="['/info-book', book.id]"> <img width="50%" height="100%" src={{book.urlimage}} alt="Изображение книги"></a>
       <br>
-      <a routerLink="/info-book">{{book.name}}, {{book.author.fullName}}</a>
+      <a [routerLink]="['/info-book', book.id]">{{book.name}}, {{book.author.fullName}}</a>
     </div>
     <br>
 </div>

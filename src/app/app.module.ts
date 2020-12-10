@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksComponent } from './components/books/books.component';
 import { RouterModule } from '@angular/router';
 import { InfoBookComponent } from './components/info-book/info-book.component';
+import {NavUserComponent} from './components/nav-user/nav-user.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,8 @@ import { InfoBookComponent } from './components/info-book/info-book.component';
     MainComponent,
     BooksComponent,
     InfoBookComponent,
+    NavUserComponent,
+    NavUserComponent
   ],
   imports: [
     RouterModule,

@@ -3,16 +3,6 @@ ul a:hover {
   font-weight: 500;
 }
 
-.dropdown-menu {
-  text-align: center;
-  background: white;
-  opacity: .9;
-  left: auto;
-  right: 0;}
-
-  .dropdown-menu input {border: none;}
-  .dropdown-menu input:hover {border: 1px solid grey;}
-
 #submitSearchButton {
   border: none;
   border-radius: 20px;
@@ -44,25 +34,6 @@ ul a:hover {
   text-align: center;
   text-shadow: 0px 1px 1px #86bf9f; }
 
-#authButton  {
-  background: inherit;
-  border: none;
-  opacity: .8;
-  color: black;
-  width: 5%;
-  font-size: 120%;
-  border-radius: 10%;
-  font-weight: bold; }
-
-#authButton img {background: inherit;}
-
-#authButton:focus {outline: none;}
-
-#authButton:hover {
-  transition: all 0.7s;
-  opacity: 1;
-  color: #86bf9f; }
-
 #bucket {
   padding-right: 2%;
   transition: all 0.7s;
@@ -74,7 +45,9 @@ ul a:hover {
   background: white !important;
   height: 70px !important;}
 
-  main {min-height: calc(100vh - 254px);}
+  main {
+    min-height: calc(100vh - 254px);
+  }
 
   footer {height: 150px; max-height: 150px;}
   footer .main-footer{ background: #65837B; opacity: .95}

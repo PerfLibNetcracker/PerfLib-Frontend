@@ -1,12 +1,13 @@
 .dropdown {
-  padding-top: 2%;
+  padding-top: 30px;
   text-align: center;
 }
 .dropdown button {
   color: black;
   background: lightgrey;}
-  
+
 .globalBookContainer {
+  height: 100%;
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(4, 350px);
@@ -14,7 +15,7 @@
 
 .book {
   text-align: center;
-  padding-bottom: 20%;}
+  padding-bottom: 50px;}
 
 .book a {
   color: black;

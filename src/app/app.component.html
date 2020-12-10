@@ -1,4 +1,3 @@
-
 <nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation">
   <a id="navBrand" class="navbar-brand" href="#"><img width="150px" height="50px" src="../assets/images/brand.png"></a>
   <div class="collapse navbar-collapse mr-auto" id="navbarNav">
@@ -10,34 +9,24 @@
       <li class="nav-item"><a class="nav-link" id="popular" href=""> Популярное</a></li>
       <li class="nav-item"><a class="nav-link" id="news" href=""> Новинки</a></li>
     </ul>
-   </div>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Навигация">
-     <span class="navbar-toggler-icon"></span>
-   </button>
-   <form class="d-flex ml-auto">
-     <input class="form-control" id="searchInput"  type="search" value="" placeholder="Возможно, стоит поискать?">
-     <button style="width: 8%;" id="submitSearchButton" type="submit" name="submitSearchButton"><img width="100%;" src="./assets/images/search.png"></button>
-   </form>
-   <a class="" id="bucket" href=""><img alt="Корзина" height="30px;" src="./assets/images/bucket.png"> </a>
-        <div class="dropdown">
-          <button class="nav-text" id="authButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="authButton"><img width="35px;" src="./assets/images/login.png"></button>
-          <div class="dropdown-menu" aria-labelledby="authButton">
-            <div class="form-group">
-              <label for="authEmail">Email address:</label>
-              <input style="opacity: .8;" type="email" class="form-control" id="authEmail" placeholder="@email">
-            </div>
-              <div class="form-group">
-                <label for="authPassword">Password:</label>
-                <input style="opacity: .8;" type="password" class="form-control" id="authPassword" placeholder="Password">
-            </div>
-            <button style="margin-bottom: 5%; border: none; color: black; background: silver;" type="submit" class="btn btn-primary">Sign in</button>
-            <a href="" style="text-decoration: none; color: black;"> Регистрация </a>
-          </div>
-        </div>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Навигация">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <form class="d-flex ml-auto">
+    <input class="form-control" id="searchInput" type="search" value="" placeholder="Возможно, стоит поискать?">
+    <button style="width: 8%;" id="submitSearchButton" type="submit" name="submitSearchButton"><img width="100%;"
+                                                                                                    src="./assets/images/search.png">
+    </button>
+  </form>
+  <a class="" id="bucket" href=""><img alt="Корзина" height="30px;" src="./assets/images/bucket.png"> </a>
+<app-nav-user></app-nav-user>
 </nav>
 
-<main><router-outlet></router-outlet></main>
+<main>
+  <router-outlet></router-outlet>
+</main>
 
 <footer id="footer" class="footer-1">
   <div class="main-footer widgets-dark typo-light">
