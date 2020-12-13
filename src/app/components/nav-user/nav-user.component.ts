@@ -22,16 +22,13 @@ export class NavUserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {
   }
 
-  // tslint:disable-next-line:typedef
-  ngOnInit() {
-    if(this.authService.isUserLoggedIn()) {
-      this.isLoggedIn = true;
-    }
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.isUserLoggedIn();
   }
 
   // tslint:disable-next-line:typedef
   handleLogin() {
-    this.authService.authService(this.username, this.password).subscribe((result)=> {
+    this.authService.authService(this.username, this.password).subscribe(() => {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
@@ -40,11 +37,11 @@ export class NavUserComponent implements OnInit {
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;
+      this.isLoggedIn = false;
     });
   }
 
-  // tslint:disable-next-line:typedef
-  handleLogout() {
+  handleLogout(): void {
     this.authService.logout();
     this.isLoggedIn = false;
   }
