@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MainComponent} from './components/main/main.component';
@@ -10,6 +10,8 @@ import {RouterModule} from '@angular/router';
 import {InfoBookComponent} from './components/info-book/info-book.component';
 import {NavUserComponent} from './components/nav-user/nav-user.component';
 import {RegistrationComponent} from './components/registration/registration.component';
+import {FormsModule} from '@angular/forms';
+import {HttpinterceptorService} from './services/httpinterceptor.service';
 
 
 @NgModule({
@@ -26,9 +28,14 @@ import {RegistrationComponent} from './components/registration/registration.comp
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpinterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -36,10 +36,8 @@ export class NavUserComponent implements OnInit {
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
       this.isLoggedIn = true;
-      console.log(this.username, this.password);
       this.router.navigate(['/books']);
     }, () => {
-      console.log("not" + this.username, this.password);
       this.invalidLogin = true;
       this.loginSuccess = false;
     });
