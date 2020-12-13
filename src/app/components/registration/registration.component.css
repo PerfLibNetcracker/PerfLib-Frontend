@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+.globalContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 5px;
+}
+
+input[type=text], input[type=password] {
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  display: inline-block;
+  border: 1px solid silver;
+  background: inherit;
+  margin-bottom: 30px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: whitesmoke;
+  outline: none;
+}
+input:hover {
+  background-color: whitesmoke;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+hr {
+  border: 1px solid inherit;
+  margin-bottom: 10px;
+}
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  height: 40px;
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}

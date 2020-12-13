@@ -9,6 +9,8 @@ import {BooksComponent} from './components/books/books.component';
 import {RouterModule} from '@angular/router';
 import {InfoBookComponent} from './components/info-book/info-book.component';
 import {NavUserComponent} from './components/nav-user/nav-user.component';
+import {RegistrationComponent} from './components/registration/registration.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import {NavUserComponent} from './components/nav-user/nav-user.component';
     BooksComponent,
     InfoBookComponent,
     NavUserComponent,
-    NavUserComponent
+    RegistrationComponent
   ],
   imports: [
     RouterModule,

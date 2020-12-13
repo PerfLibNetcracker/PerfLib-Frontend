@@ -1,70 +1,22 @@
-<div class="globalContainer">
-  <div class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/images/books.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 style="color: indigo;" class="card-title">Специально для вас:</h5>
-            <p class="card-text">Рекомендация 1.</p>
-            <a href="#" class="btn btn-primary">Подробнее о книге</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/images/books.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 style="color: indigo;" class="card-title">Специально для вас:</h5>
-            <p class="card-text">Рекомендация 2.</p>
-            <a href="#" class="btn btn-primary">Подробнее о книге</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/images/books.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 style="color: indigo;" class="card-title">Специально для вас:</h5>
-            <p class="card-text">Рекомендация 3.</p>
-            <a href="#" class="btn btn-primary">Подробнее о книге</a>
-          </div>
+<div class="slider-container">
+  <div class="carousel">
+    <div class="items" [ngStyle]="getTransformStyles()">
+      <div *ngFor="let page of arrPages" class="container-items">
+        <div class="list-item" *ngFor="let sortedItem of sortedItems[page-1]">
+          <a [routerLink]="['/info-book', sortedItem.id]">
+            <img [src]="sortedItem.urlImage" alt="Изображение книги"><br>{{sortedItem.author.fullName}}, {{sortedItem.name}}</a>
         </div>
       </div>
     </div>
-  </div>
-  <div class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/images/books.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 style="color: #008b8b;" class="card-title">Новинки месяца:</h5>
-            <p class="card-text">Новика 1.</p>
-            <a href="#" class="btn btn-primary">Подробнее о книге</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/images/books.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 style="color: #008b8b;" class="card-title">Новинки месяца:</h5>
-            <p class="card-text">Новика 2.</p>
-            <a href="#" class="btn btn-primary">Подробнее о книге</a>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="card" style="width: 18rem;">
-          <img src="../assets/images/books.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 style="color: #008b8b;" class="card-title">Новинки месяца:</h5>
-            <p class="card-text">Новика 3.</p>
-            <a href="#" class="btn btn-primary">Подробнее о книге</a>
-          </div>
-        </div>
-      </div>
+    <div class="controls" *ngIf="arrPages.length > 1">
+      <button (click)="move(-1)">
+        left
+      </button>
+      <span *ngFor="let page of arrPages"
+            [ngStyle]="getSpanStyles(page)"></span>
+      <button (click)="move(1)">
+        right
+      </button>
     </div>
   </div>
 </div>

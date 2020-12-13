@@ -1,9 +1,9 @@
 import {Author} from './Author';
 import {Genre} from './Genre';
 
-export class Book {
+export interface Book {
   id: number;
-  urlimage: string;
+  urlImage: string;
   name: string;
   price: number;
   totalViews: number;

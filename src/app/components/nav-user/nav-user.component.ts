@@ -11,7 +11,7 @@ export class NavUserComponent implements OnInit {
   isLoggedIn: boolean;
 
   constructor(private authService: AuthService) {
-    console.log('Loggin:', authService.isLoggedIn);
+    console.log('LoggedIn:', authService.isLoggedIn);
   }
 
   ngOnInit(): void {
@@ -22,7 +22,9 @@ export class NavUserComponent implements OnInit {
       }
     );
   }
-
+  login(): void {
+    this.authService.login('login', 'password');
+  }
   logout(): void {
     this.authService.logout();
   }

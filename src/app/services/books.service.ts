@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Book} from '../model/Book';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,8 @@ export class BooksService {
   constructor(private http: HttpClient) {
   }
 
-  getBooksList(): Observable<any> {
-    return this.http.get(this.URL_findAllBooks);
+  getBooksList(): Observable<Book[]> {
+    return this.http.get(this.URL_findAllBooks).pipe(tap((data: Book[]) => data));
   }
 
   getGenresList(): Observable<any> {
