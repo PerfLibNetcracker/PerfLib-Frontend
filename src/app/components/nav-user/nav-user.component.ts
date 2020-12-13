@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService, User} from '../../services/auth.service';
+import {AuthService} from '../../services/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-nav-user',
@@ -8,24 +10,44 @@ import {AuthService, User} from '../../services/auth.service';
 })
 export class NavUserComponent implements OnInit {
 
+
   isLoggedIn: boolean;
+  username: string;
+  password: string;
+  errorMessage = 'Неправильный логин или пароль';
+  successMessage: string;
+  invalidLogin = false;
+  loginSuccess = false;
 
-  constructor(private authService: AuthService) {
-    console.log('LoggedIn:', authService.isLoggedIn);
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {
   }
 
-  ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(
-      next => {
-        console.log(next);
-        this.isLoggedIn = next;
-      }
-    );
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
+    if(this.authService.isUserLoggedIn()) {
+      this.isLoggedIn = true;
+    }
   }
-  login(): void {
-    this.authService.login('login', 'password');
+
+  // tslint:disable-next-line:typedef
+  handleLogin() {
+    this.authService.authService(this.username, this.password).subscribe((result)=> {
+      this.invalidLogin = false;
+      this.loginSuccess = true;
+      this.successMessage = 'Login Successful.';
+      this.isLoggedIn = true;
+      console.log(this.username, this.password);
+      this.router.navigate(['/books']);
+    }, () => {
+      console.log("not" + this.username, this.password);
+      this.invalidLogin = true;
+      this.loginSuccess = false;
+    });
   }
-  logout(): void {
+
+  // tslint:disable-next-line:typedef
+  handleLogout() {
     this.authService.logout();
+    this.isLoggedIn = false;
   }
 }

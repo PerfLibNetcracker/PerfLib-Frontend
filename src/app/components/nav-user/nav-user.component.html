@@ -5,22 +5,23 @@
     <div *ngIf="!isLoggedIn; then unauthorized else authorized"></div>
     <ng-template #unauthorized>
       <div class="form-group">
-        <label for="authEmail">Email address:</label>
-        <input #formEmail style="opacity: .8;" type="email" class="form-control" name="authEmail" id="authEmail" placeholder="@email">
+        <div class="alert alert-danger" *ngIf='invalidLogin'>{{errorMessage}}</div>
+        <label for="authEmail">User address:</label>
+        <input  style="opacity: .8;" type="text" class="form-control" [(ngModel)]="username" name="authEmail" id="authEmail" placeholder="@email">
       </div>
       <div class="form-group">
         <label for="authPassword">Password:</label>
-        <input #formPassword style="opacity: .8;" type="password" class="form-control" name="authPassword" id="authPassword" placeholder="Password">
+        <input style="opacity: .8;" type="password" class="form-control" [(ngModel)]="password" id="authPassword" placeholder="Password" name="password">
       </div>
-      <button (click)="login()" style="margin-bottom: 5%; border: none; color: black; background: silver;" type="submit"
-              class="btn btn-primary">Sign in
+      <button style="margin-bottom: 5%; border: none; color: black; background: silver;" (click)="handleLogin()" type="button"
+              class="btn btn-primary">Войти
       </button>
-      <a [routerLink]="['/registration']" style="text-decoration: none; color: black;"> Регистрация </a>
+      <a href="" style="text-decoration: none; color: black;"> Регистрация </a>
     </ng-template>
     <ng-template #authorized>
-      <button (click)="logout()" style="margin-bottom: 5%; border: none; color: black; background: silver;"
+      <button (click)="handleLogout()" style="margin-bottom: 5%; border: none; color: black; background: silver;"
               type="submit"
-              class="btn btn-primary">Sign out
+              class="btn btn-primary">Выйти
       </button>
     </ng-template>
   </div>
