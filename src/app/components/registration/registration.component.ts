@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  user: User = new User();
+  submitted = false;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  newUser(): void {
+    this.submitted = false;
+    this.user = new User();
+  }
+
+  save() {
+    this.authService.createUser(this.user).subscribe(data => {
+      console.log(data);
+      this.user = new User();
+    },
+      error => console.log(error));
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.save();
+  }
 }

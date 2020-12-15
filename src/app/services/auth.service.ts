@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,10 @@ export class AuthService {
     const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     if (user === null) { return ''; }
     return user;
+  }
+  // tslint:disable-next-line:ban-types
+  createUser(user: Object): Observable<Object> {
+    return this.http.post('http://localhost:8081/api/service/authentication/registration/', user);
   }
 
 }
