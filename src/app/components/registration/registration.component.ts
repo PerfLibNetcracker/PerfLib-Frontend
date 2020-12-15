@@ -23,7 +23,7 @@ export class RegistrationComponent implements OnInit {
     this.user = new User();
   }
 
-  save() {
+  save(): void {
     this.authService.createUser(this.user).subscribe(data => {
       console.log(data);
       this.user = new User();
@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
       error => console.log(error));
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
     this.save();
   }

@@ -1,10 +1,13 @@
 <div class="dropdown">
-  <button (click)="checkLoggedIn()" class="nav-text bucketButton d-flex" id="bucketButton" type="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" name="bucketButton"><img alt="Корзина" height="35px" src="./assets/images/bucket.png"></button>
+  <button (click)="checkLoggedIn()" class="nav-text bucketButton d-flex" id="bucketButton" type="button"
+          data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" name="bucketButton"><img alt="Корзина" height="35px" src="./assets/images/bucket.png">
+  </button>
   <div class="dropdown-menu" aria-labelledby="authButton">
     <div *ngIf="!isLoggedIn; then unauthorized else authorized"></div>
     <ng-template #unauthorized>
-      <span>Чтобы воспользоваться корзиной, авторизуйтесь, либо <a routerLink="/registration">зарегистрируйтесь</a></span>
+      <span>Корзина доступна авторизованным пользователям.
+        <br><a>Войдите</a> в аккаунт или <a style="color: #1b5f5f;" routerLink="/registration">зарегистрируйтесь</a></span>
     </ng-template>
     <ng-template #authorized>
       <hr>
@@ -12,7 +15,8 @@
       <hr>
       <ul>
         <li style="padding-bottom: 20px;"><a routerLink="">Мои товары</a></li>
-        <li><a style="font-weight: bolder; color: firebrick; text-decoration: none;" routerLink="">Очистить корзину</a></li>
+        <li><a style="font-weight: bolder; color: firebrick; text-decoration: none;" routerLink="">Очистить корзину</a>
+        </li>
       </ul>
     </ng-template>
   </div>

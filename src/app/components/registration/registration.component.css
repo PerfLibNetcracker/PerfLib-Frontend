@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+p {
+  text-align: center;
+}
+
 .globalContainer {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -34,6 +38,7 @@ input[type=text]:focus, input[type=password]:focus {
   background-color: whitesmoke;
   outline: none;
 }
+
 input:hover {
   background-color: whitesmoke;
 }
@@ -43,8 +48,11 @@ input::placeholder {
 }
 
 hr {
-  border: 1px solid inherit;
-  margin-bottom: 10px;
+  width: 100%;
+}
+
+span {
+  color: crimson;
 }
 
 .registerbtn {
@@ -54,8 +62,9 @@ hr {
   cursor: pointer;
   opacity: 0.9;
   height: 40px;
-  width: 120px;
+  width: 160px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .registerbtn:hover {

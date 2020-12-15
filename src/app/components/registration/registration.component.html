@@ -1,28 +1,28 @@
-<div [hidden]="submitted" class="globalContainer">
-  <form (ngSubmit)="onSubmit()" action="/controller-registration">
-    <div class="container2">
-      <h1 style="text-align: center;">Регистрация</h1>
-      <p style="text-align: center;">Зарегистрируйте новый аккаунт</p>
-      <hr>
+<div [hidden]="!submitted" class="alert-info container" style="text-align: center; height: 200px; padding: 50px">
+  <h2>Ваш аккаунт успешно зарегистрирован!</h2>
+  <br>
+  <h4>Теперь Вы можете войти в свой аккаунт</h4>
+</div>
 
-      <label for="email"><b>@e-mail</b></label>
+<div [hidden]="submitted" class="globalContainer">
+  <form (ngSubmit)="onSubmit()">
+    <div class="container2">
+      <hr>
+      <h2 style="text-align: center;">Регистрация</h2>
+      <hr>
+      <label for="email"><b>@e-mail<span>*</span></b></label>
       <input id="email" type="text" placeholder="e-mail" name="email" required [(ngModel)] = "user.email">
 
-      <label for="username"><b>Логин</b></label>
+      <label for="username"><b>Логин<span>*</span></b></label>
       <input id="username" type="text" placeholder="Логин" name="login" required [(ngModel)] = "user.username">
 
-      <label for="password"><b>Пароль</b></label>
+      <label for="password"><b>Пароль<span>*</span></b></label>
       <input id="password" type="password" placeholder="Придумайте пароль" name="psw" required [(ngModel)] = "user.password">
 
-      <label for="passwordRepeat"><b>Повторите пароль</b></label>
+      <label for="passwordRepeat"><b>Повторите пароль<span>*</span></b></label>
       <input id="passwordRepeat" type="password" placeholder="Повторите пароль" name="psw-repeat" required>
-      <hr>
-      <div [hidden]="!submitted">
-        <h4>Успешная регистрация!</h4>
-      </div>
-      <p style="text-align: center;">Регистрируясь, Вы соглашаетесь с <a href="#">Политикой</a></p>
-
-      <button type="submit" class="registerbtn">Зарегистрироваться</button>
+      <p>Регистрируясь, Вы соглашаетесь с <a href="#">Политикой</a></p>
+      <button style="margin-bottom: 30px;" type="submit" class="registerbtn">Зарегистрироваться</button>
     </div>
   </form>
 </div>
