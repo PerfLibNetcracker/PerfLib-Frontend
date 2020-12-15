@@ -1,11 +1,9 @@
-<nav id="navigation" class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation">
-  <a id="navBrand" class="navbar-brand" href="#"><img width="150px" height="50px" src="../assets/images/brand.png"></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation">
+  <a class="navbar-brand" href="#"><img class="brandImage" width="150px" height="50px" src="../assets/images/brand.png"></a>
   <div class="collapse navbar-collapse mr-auto" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active"><a class="nav-link" href="">Главная <span class="sr-only">(current)</span></a></li>
+      <li class="nav-item active"><a class="nav-link" href=""> <span style="font-weight: bold"> Главная </span></a></li>
       <li class="nav-item"><a class="nav-link" id="books" routerLink="/books" routerLinkActive="active"> Книги </a></li>
-      <li class="nav-item"><a class="nav-link" id="genres" href=""> Жанры</a></li>
-      <li class="nav-item"><a class="nav-link" id="authors" href=""> Авторы</a></li>
       <li class="nav-item"><a class="nav-link" id="popular" href=""> Популярное</a></li>
       <li class="nav-item"><a class="nav-link" id="news" href=""> Новинки</a></li>
     </ul>
@@ -14,13 +12,12 @@
           aria-controls="navbarNav" aria-expanded="false" aria-label="Навигация">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <form class="d-flex ml-auto">
-    <input class="form-control" id="searchInput" type="search" value="" placeholder="Возможно, стоит поискать?">
-    <button style="width: 8%;" id="submitSearchButton" type="submit" name="submitSearchButton"><img width="100%;"
-                                                                                                    src="./assets/images/search.png">
+  <form class="d-flex">
+    <input class="d-flex searchInput" type="search" value="" placeholder="Возможно, стоит поискать?">
+    <button style="width: 40px;" class="submitSearchButton" type="submit" name="submitSearchButton"><img width="30px" src="./assets/images/search.png">
     </button>
   </form>
-  <a class="" id="bucket" href=""><img alt="Корзина" height="30px;" src="./assets/images/bucket.png"> </a>
+  <app-nav-bucket></app-nav-bucket>
   <app-nav-user></app-nav-user>
 </nav>
 
@@ -28,20 +25,17 @@
   <router-outlet></router-outlet>
 </main>
 
-<footer id="footer" class="footer-1">
+<footer class="footer">
   <div class="main-footer widgets-dark typo-light">
     <div class="container">
       <div class="row">
         <div class="col">
-          <h5 class="widget-title"><a href="#"><img src="./assets/images/1.png"></a></h5>
+          <h5 class="widget"><a href="#"><img src="./assets/images/1.png"></a></h5>
         </div>
-        <div class="widget">
-          <h5 class="widget-title"><a>Полезные ссылки</a></h5>
-          <ul>
-            <li><a href="#.">Почему мы?</a></li>
-            <li><a href="#.">Контакты</a></li>
-            <li><a href="#.">Помощь</a></li>
-          </ul>
+        <div class="aboutUs">
+          <a href="#.">О нас</a>
+          <a href="#.">Контакты</a>
+          <a href="#.">Помощь</a>
         </div>
       </div>
     </div>

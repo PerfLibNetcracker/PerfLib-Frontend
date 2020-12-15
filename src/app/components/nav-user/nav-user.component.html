@@ -19,6 +19,10 @@
       <a routerLink="/registration" style="text-decoration: none; color: black;"> Регистрация </a>
     </ng-template>
     <ng-template #authorized>
+      <hr>
+      Вы вошли как <span> {{this.authService.getLoggedInUserName()}}</span>
+      <hr>
+      <br>
       <button (click)="handleLogout()" style="margin-bottom: 5%; border: none; color: black; background: silver;"
               type="submit"
               class="btn btn-primary">Выйти

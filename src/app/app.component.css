@@ -1,26 +1,40 @@
+.brandImage:hover {
+  opacity: 1 !important;
+}
+.brandImage {
+  opacity: .85 !important;
+}
+
 ul a:hover {
   color: #86bf9f !important;
   font-weight: 500;
 }
 
-#submitSearchButton {
+.submitSearchButton {
+  cursor: pointer;
+  outline: none;
   border: none;
   border-radius: 20px;
   background: #86bf9f;
   opacity: .7;
 }
 
-#submitSearchButton:hover {
+.submitSearchButton:hover {
   opacity: .9;
   background: #86bf9f;
 }
 
-#submitSearchButton:focus {
+.submitSearchButton:focus {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  opacity: 0.9;
+  cursor: pointer;
   outline: none;
 }
 
-#searchInput {
-  width: 47%;
+.searchInput {
+  width: 240px;
   opacity: .75;
   background: inherit;
   border: none;
@@ -28,27 +42,25 @@ ul a:hover {
   outline: none;
 }
 
-#searchInput:hover {
+.searchInput:focus {
+  outline: none !important;
+}
+
+.searchInput:hover {
   opacity: .6;
   background: inherit;
   border: none;
   outline: none;
 }
 
-#searchInput::placeholder {
+.searchInput:hover:focus::placeholder {
+  opacity: 0;
+}
+
+.searchInput::placeholder {
   color: black;
   text-align: center;
   text-shadow: 0px 1px 1px #86bf9f;
-}
-
-#bucket {
-  padding-right: 2%;
-  transition: all 0.7s;
-  opacity: .9;
-}
-
-#bucket:hover {
-  opacity: .7;
 }
 
 nav {
@@ -57,23 +69,12 @@ nav {
 }
 
 main {
-  min-height: calc(100vh - 254px);
-}
-
-footer {
-  height: 150px;
-  max-height: 150px;
+  min-height: calc(100vh - 220px);
 }
 
 footer .main-footer {
   background: #65837B;
   opacity: .95
-}
-
-footer ul {
-  padding-left: 0;
-  list-style: none;
-  text-align: center;
 }
 
 .footer-copyright {
@@ -84,17 +85,35 @@ footer ul {
 .footer-copyright p {
   color: lightgrey;
   margin: 0 auto;
+  padding: 0;
   text-align: center;
 }
-
 .widget {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 10px;
 }
 
-.widget li a {
+.widget img {
+  width: 200px;
+  height: 90px;
+}
+
+.widget img:hover {
+  opacity: .9;
+}
+
+.aboutUs {
+  padding-top: 40px;
+}
+.aboutUs a {
+  font-size: 16px;
+  padding-left: 50px;
   color: white;
   text-decoration: none;
+  font-weight: lighter;
+}
+
+.aboutUs a:hover {
+  color: black;
 }
 
 .typo-light h1, .typo-light h2, .typo-light h3, .typo-light h4, .typo-light h5,

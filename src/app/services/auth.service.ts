@@ -30,23 +30,25 @@ export class AuthService {
   registerSuccessfulLogin(username, password): void {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
   }
+
   logout(): void {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     this.username = null;
     this.password = null;
   }
+
   isUserLoggedIn(): boolean {
     const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     return user !== null;
   }
+
   getLoggedInUserName(): any {
     const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     if (user === null) { return ''; }
     return user;
   }
-  // tslint:disable-next-line:ban-types
-  createUser(user: Object): Observable<Object> {
+
+  createUser(user: object): Observable<object> {
     return this.http.post('http://localhost:8081/api/service/authentication/registration/', user);
   }
-
 }

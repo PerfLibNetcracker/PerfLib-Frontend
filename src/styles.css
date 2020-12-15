@@ -2,7 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 html, body {
   margin: 0 auto; /*чтобы центрировать контент при превышении max-width*/
-  padding: 0 auto;
+  padding: 0;
   min-width: 900px;
   max-width: 2000px;}
 body {

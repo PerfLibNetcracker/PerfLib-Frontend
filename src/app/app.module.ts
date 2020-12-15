@@ -12,6 +12,7 @@ import {NavUserComponent} from './components/nav-user/nav-user.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {FormsModule} from '@angular/forms';
 import {HttpinterceptorService} from './services/httpinterceptor.service';
+import { NavBucketComponent } from './components/nav-bucket/nav-bucket.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {HttpinterceptorService} from './services/httpinterceptor.service';
     BooksComponent,
     InfoBookComponent,
     NavUserComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NavBucketComponent
   ],
   imports: [
     RouterModule,

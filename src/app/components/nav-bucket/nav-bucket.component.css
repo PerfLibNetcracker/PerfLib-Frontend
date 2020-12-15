@@ -6,25 +6,15 @@
   right: 0;
 }
 
-.dropdown-menu input {
-  border: none;
-}
-
-.dropdown-menu input:hover {
-  border: 1px solid grey;
-}
-
-#authButton {
+.bucketButton {
+  opacity: 0.75;
   background: inherit;
   border: none;
-  opacity: .75;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
-#authButton img {
-  background: inherit;
-}
-
-#authButton:focus {
+.bucketButton:focus {
   -webkit-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
@@ -33,8 +23,26 @@
   outline: none;
 }
 
-#authButton:hover {
-  opacity: 1;
+.bucketButton img {
+  background: inherit;
+}
+
+.bucketButton:hover {
+  opacity: .9;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding-top: 5px;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: black
 }
 
 span {

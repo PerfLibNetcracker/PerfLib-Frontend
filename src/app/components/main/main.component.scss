@@ -27,7 +27,6 @@ p {
   text-align: center;
   color: darkslategrey;
   font-weight: lighter;
-  padding-bottom: 20px;
 }
 
 .slider-container {
@@ -183,12 +182,23 @@ p {
 
   }
   .list-item a {
-    color: darkslategrey !important;
+    color: black !important;
     text-decoration: none !important;
     font-weight: bold;
   }
+  .list-item a:hover {
+    color: indigo !important;
+  }
 
   img {
+    opacity: 0.95;
     width: 80%;
     height: 300px;
+  }
+  img:hover {
+    -webkit-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+    opacity: 1;
+    cursor: pointer;
   }

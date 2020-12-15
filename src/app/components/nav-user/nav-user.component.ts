@@ -26,8 +26,7 @@ export class NavUserComponent implements OnInit {
     this.isLoggedIn = this.authService.isUserLoggedIn();
   }
 
-  // tslint:disable-next-line:typedef
-  handleLogin() {
+  handleLogin(): void {
     this.authService.authService(this.username, this.password).subscribe(() => {
       this.invalidLogin = false;
       this.loginSuccess = true;

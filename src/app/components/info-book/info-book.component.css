@@ -1,6 +1,7 @@
 .book {
+  padding-top: 20px;
+  padding-bottom: 51px;
   width: 100%;
-  height: calc(100vh - 254px);
   display: grid;
   grid-template-columns: calc(50% - 10px) calc(50% - 10px);
   gap: 20px;
@@ -19,6 +20,8 @@
 }
 
 .text {
+  padding-top: 20px;
+  padding-bottom: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
