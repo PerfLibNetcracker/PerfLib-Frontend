@@ -9,6 +9,7 @@ import {AuthService} from '../../services/auth.service';
 export class NavBucketComponent implements OnInit {
 
   isLoggedIn: boolean;
+  counter = 0;
 
   constructor(private authService: AuthService) { }
 

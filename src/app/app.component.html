@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation">
   <a class="navbar-brand" href="#"><img class="brandImage" width="150px" height="50px" src="../assets/images/brand.png"></a>
-  <div class="collapse navbar-collapse mr-auto" id="navbarNav">
-    <ul class="navbar-nav">
+  <div  class="collapse navbar-collapse mr-auto" id="navbarNav">
+    <ul id="navbarItems" class="navbar-nav">
       <li class="nav-item active"><a class="nav-link" href=""> <span style="font-weight: bold"> Главная </span></a></li>
       <li class="nav-item"><a class="nav-link" id="books" routerLink="/books" routerLinkActive="active"> Книги </a></li>
       <li class="nav-item"><a class="nav-link" id="popular" href=""> Популярное</a></li>
       <li class="nav-item"><a class="nav-link" id="news" href=""> Новинки</a></li>
     </ul>
   </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+  <button id="togglerButton" (click)="hideSearchForm()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Навигация">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <form class="d-flex">
+  <form id="searchForm" class="d-flex searchForm">
     <input class="d-flex searchInput" type="search" value="" placeholder="Возможно, стоит поискать?">
     <button style="width: 40px;" class="submitSearchButton" type="submit" name="submitSearchButton"><img width="30px" src="./assets/images/search.png">
     </button>
