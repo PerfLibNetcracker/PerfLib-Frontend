@@ -3,31 +3,35 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Book} from '../model/Book';
 import {tap} from 'rxjs/operators';
+import {Genre} from '../model/Genre';
+import {environment} from '../../environments/environment';
+
+
+const API_ROOT = `${environment.apiDataService}/api/service/search`;
+const GET_BOOKS_ROUTE = `${API_ROOT}/find-all`;
+const GET_GENRES_ROUTE = `${API_ROOT}/find-all-genres`;
+const GET_BOOK_BY_ID = API_ROOT;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
 
-  // tslint:disable-next-line:variable-name
-  private URL_findAllBooks = 'http://localhost:8080/api/service/search/find-all';
-  // tslint:disable-next-line:variable-name
-  private URL_findAllGenres = 'http://localhost:8080/api/service/search/find-all-genres';
-  // tslint:disable-next-line:variable-name
-  private URL_findBookById = 'http://localhost:8080/api/service/search/';
-
   constructor(private http: HttpClient) {
   }
 
   getBooksList(): Observable<Book[]> {
-    return this.http.get(this.URL_findAllBooks).pipe(tap((data: Book[]) => data));
+    return this.http.get(GET_BOOKS_ROUTE).pipe(tap((data: Book[]) => data));
   }
 
-  getGenresList(): Observable<any> {
-    return this.http.get(this.URL_findAllGenres);
+  getGenresList(): Observable<Genre[]> {
+    return this.http.get(GET_GENRES_ROUTE).pipe(tap((data: Genre[]) => {
+      return data;
+    }));
   }
 
   getBookInfo(id: string): Observable<any> {
-    return this.http.get(this.URL_findBookById + id);
+    return this.http.get(`${GET_BOOK_BY_ID}/${id}`);
   }
 }

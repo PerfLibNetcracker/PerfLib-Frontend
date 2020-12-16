@@ -22,7 +22,7 @@ const getPaginationFactor = (width: number) => {
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit, OnDestroy {
   constructor(private booksService: BooksService) {
@@ -68,6 +68,7 @@ export class MainComponent implements OnInit, OnDestroy {
     window.addEventListener('resize', this.resizeUpdate);
     this.booksService.getBooksList().subscribe((data) => {
       this.items = data;
+      this.numberOfSlides = data.length;
       this.initSlider();
     });
   }

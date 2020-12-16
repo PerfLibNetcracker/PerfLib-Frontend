@@ -4,12 +4,13 @@
   <hr>
 </div>
 <div class="slider-container">
-  <div class="carousel">
-    <div class="items" [ngStyle]="getTransformStyles()">
+  <div class="carousel1">
+    <div class="items1" [ngStyle]="getTransformStyles()">
       <div *ngFor="let page of arrPages" class="container-items">
         <div class="list-item" *ngFor="let sortedItem of sortedItems[page-1]">
           <a [routerLink]="['/info-book', sortedItem.id]">
-            <img [src]="sortedItem.urlImage" alt="Изображение книги"><br>{{sortedItem.author.fullName}}, {{sortedItem.name}}</a>
+            <img [src]="sortedItem.urlImage" alt="Изображение книги"><br>{{sortedItem.author.fullName}}
+            , {{sortedItem.name}}</a>
         </div>
       </div>
     </div>

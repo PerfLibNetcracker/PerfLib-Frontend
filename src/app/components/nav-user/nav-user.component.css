@@ -15,12 +15,13 @@ input::placeholder {
 input {
   border: none;
   height: 50px;
-  width: 99.5%;
+  width: calc(100% - 2px);
 }
 
 input:hover {
   border: 1px solid grey;
 }
+
 input:focus {
   border: 2px solid grey;
   outline: none;

@@ -1,4 +1,10 @@
+nav {
+  width: 100%;
+}
+
 .row {
+  display: flex;
+  gap: 50px;
   justify-content: center;
   width: 100%;
 }
@@ -17,7 +23,7 @@
   height: 100%;
   margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(4, 330px);
+  grid-template-columns: repeat(4, calc(100vw - 77%));
   justify-content: center;
 }
 
@@ -44,9 +50,10 @@
   opacity: 1;
   cursor: pointer;
 }
+
 .book img {
   opacity: 0.9;
   width: 50%;
-  height: 250px;
+  height: 70%;
   padding-bottom: 10px;
 }

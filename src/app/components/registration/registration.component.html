@@ -1,6 +1,5 @@
 <div [hidden]="!submitted" class="alert-info container" style="text-align: center; height: 200px; padding: 50px">
   <h2>Ваш аккаунт успешно зарегистрирован!</h2>
-  <br>
   <h4>Теперь Вы можете войти в свой аккаунт</h4>
 </div>
 
@@ -11,13 +10,14 @@
       <h2 style="text-align: center;">Регистрация</h2>
       <hr>
       <label for="email"><b>@e-mail<span>*</span></b></label>
-      <input id="email" type="text" placeholder="e-mail" name="email" required [(ngModel)] = "user.email">
+      <input id="email" type="text" placeholder="e-mail" name="email" required [(ngModel)]="user.email">
 
       <label for="username"><b>Логин<span>*</span></b></label>
-      <input id="username" type="text" placeholder="Логин" name="login" required [(ngModel)] = "user.username">
+      <input id="username" type="text" placeholder="Логин" name="login" required [(ngModel)]="user.username">
 
       <label for="password"><b>Пароль<span>*</span></b></label>
-      <input id="password" type="password" placeholder="Придумайте пароль" name="psw" required [(ngModel)] = "user.password">
+      <input id="password" type="password" placeholder="Придумайте пароль" name="psw" required
+             [(ngModel)]="user.password">
 
       <label for="passwordRepeat"><b>Повторите пароль<span>*</span></b></label>
       <input id="passwordRepeat" type="password" placeholder="Повторите пароль" name="psw-repeat" required>

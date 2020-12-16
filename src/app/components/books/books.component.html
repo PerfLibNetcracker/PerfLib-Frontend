@@ -5,30 +5,26 @@
       Жанры
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <div *ngFor="let genre of genres | async" class="item-menu">
+      <div *ngFor="let genre of genres" class="item-menu">
         <a class="dropdown-item" href="#">{{genre.name}}</a>
       </div>
     </div>
   </div>
-     
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
       Авторы
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <div *ngFor="let book of books | async" class="item-menu">
+      <div *ngFor="let book of books" class="item-menu">
         <a class="dropdown-item" href="#">{{book.author.fullName}}</a>
       </div>
     </div>
   </div>
 </div>
 <div class="globalBookContainer">
-  <div *ngFor="let book of books | async" class="book">
-    <a [routerLink]="['/info-book', book.id]"> <img src={{book.urlImage}}
-                                                    alt="Изображение книги"></a>
-    <br>
-    <a [routerLink]="['/info-book', book.id]">{{book.name}}, {{book.author.fullName}}</a>
+  <div *ngFor="let book of books" class="book">
+    <a [routerLink]="['/info-book', book.id]"> <img src={{book.urlImage}} alt="Изображение книги"></a>
+    <p><a [routerLink]="['/info-book', book.id]">{{book.name}}, {{book.author.fullName}}</a></p>
   </div>
-  <br>
 </div>
