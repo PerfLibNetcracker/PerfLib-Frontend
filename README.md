@@ -1,3 +1,7 @@
+**Для сборки и запуска докерфайла:**
+`docker build -t angular/perflib-frontend-docker .` в корне директории
+Запуск через:
+`docker run -d -p 4200:4200 angular/perflib-frontend-docker`
 # PerfLib
 Before build project you must install node.js (for using 'npm') [Source:](https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi)
 
