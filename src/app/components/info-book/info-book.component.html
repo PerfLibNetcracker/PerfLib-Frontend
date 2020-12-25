@@ -1,4 +1,5 @@
 <div *ngIf="book | async as bookinfo" class="book">
+
   <div class="imageBook">
     <img src={{bookinfo.urlImage}} alt="Изображение книги">
     <a>Рейтинг: <span style="font-weight: bold">{{bookinfo.rating}}</span></a>
@@ -7,9 +8,11 @@
   <div class="text">
     <a style="font-weight: bold">{{bookinfo.name}}</a>
     <a>Автор: {{bookinfo.author.fullName}}</a>
+    <div *ngIf="bookDTO | async as bookdto" class="book">
+      <a> Автор{{bookdto.meRated}}</a> НЕ МОГУ ЭТО ВЫВЕСТИ
+    </div>
     <a>Жанр: {{bookinfo.genre.name}}</a>
     <a style="color: indigo">Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
     <button class="btn btn-dark" type="button">В корзину</button>
   </div>
 </div>
-
