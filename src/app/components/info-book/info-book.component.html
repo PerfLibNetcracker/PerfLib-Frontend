@@ -2,6 +2,16 @@
 
   <div class="imageBook">
     <img src={{bookinfo.urlImage}} alt="Изображение книги">
+    <div *ngIf="isLoggedIn; then authorized"></div>
+    <ng-template #authorized>
+      <form (ngSubmit)="ratedBook()">
+        <label for="username"><b>Оцените книгу:</b></label>
+
+        <input id="username" type="number" min="0" max="10" placeholder="оценка" name="login" required [(ngModel)] = "rated">
+
+        <button style="margin-bottom: 30px;" type="submit" class="btn btn-primary">Оценить</button>
+      </form>
+    </ng-template>
     <a>Рейтинг: <span style="font-weight: bold">{{bookinfo.rating}}</span></a>
     <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>
   </div>

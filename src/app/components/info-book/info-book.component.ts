@@ -39,7 +39,7 @@ export class InfoBookComponent implements OnInit {
   reloadData() {
     this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));
     this.book = this.booksService.getBookInfo(String(this.id));
-    this.isLoggedIn = this.authService.isUserLoggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn();
     console.log(this.authService.getLoggedInUserName());
     console.log(this.bookDTO);
     this.bookDTO.subscribe(res => console.log(res));
