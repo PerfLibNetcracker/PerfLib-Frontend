@@ -3,12 +3,21 @@
 html, body {
   margin: 0 auto; /*чтобы центрировать контент при превышении max-width*/
   padding: 0;
-  min-width: 900px;
-  max-width: 2000px;}
+  width: 100%;
+}
+
 body {
   background-image: url(./assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% auto;
-  height: 100vh;
+  background-size: cover;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol, img {
+  margin: 0;
+  padding: 0;
+}
+

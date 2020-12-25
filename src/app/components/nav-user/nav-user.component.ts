@@ -19,11 +19,11 @@ export class NavUserComponent implements OnInit {
   invalidLogin = false;
   loginSuccess = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private router: Router, public authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isUserLoggedIn();
+    this.isLoggedIn = this.authService.authStatus;
   }
 
   handleLogin(): void {

@@ -11,8 +11,6 @@
   opacity: 0.75;
   background: inherit;
   border: none;
-  padding-right: 30px;
-  padding-left: 63px;
 }
 
 .bucketButton:focus {

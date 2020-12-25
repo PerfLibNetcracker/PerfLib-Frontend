@@ -1,5 +1,5 @@
 <div id="bucketDropdownMenu" class="dropdown">
-  <button (click)="checkLoggedIn()" class="nav-text bucketButton d-flex" id="bucketButton" type="button"
+  <button (click)="checkBucket()" class="nav-text bucketButton d-flex" id="bucketButton" type="button"
           data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false" name="bucketButton"><img alt="Корзина" height="35px" src="./assets/images/bucket.png">
   </button>
@@ -7,7 +7,8 @@
     <div *ngIf="!isLoggedIn; then unauthorized else authorized"></div>
     <ng-template #unauthorized>
       <span>Корзина доступна авторизованным пользователям.
-        <br><a>Войдите</a> в аккаунт или <a style="color: #1b5f5f;" routerLink="/registration">зарегистрируйтесь</a></span>
+        <br><a>Войдите</a> в аккаунт или <a style="color: #1b5f5f;"
+                                            routerLink="/registration">зарегистрируйтесь</a></span>
     </ng-template>
     <ng-template #authorized>
       <hr>

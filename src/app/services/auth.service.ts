@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class AuthService {
 
+  isUserLoggedIn: boolean;
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   public username: string;
   public password: string;
@@ -15,6 +16,11 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) {
+    this.isUserLoggedIn = (!!sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME));
+  }
+
+  get authStatus(): boolean {
+    return this.isUserLoggedIn;
   }
   // tslint:disable-next-line:typedef
   authService(username: string, password: string) {
@@ -23,6 +29,7 @@ export class AuthService {
       this.username = username;
       this.password = password;
       this.registerSuccessfulLogin(username, password);
+      this.isUserLoggedIn = true;
     }));
   }
   createBasicAuthToken(username: string, password: string): string {
@@ -38,9 +45,10 @@ export class AuthService {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     this.username = null;
     this.password = null;
+    this.isUserLoggedIn = false;
   }
 
-  isUserLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     return user !== null;
   }

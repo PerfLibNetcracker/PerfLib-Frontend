@@ -9,14 +9,14 @@ import {AuthService} from '../../services/auth.service';
 export class NavBucketComponent implements OnInit {
 
   isLoggedIn: boolean;
-  counter = 0;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isUserLoggedIn();
+    this.isLoggedIn = this.authService.isUserLoggedIn;
   }
-  checkLoggedIn(): boolean {
-    return this.isLoggedIn = this.authService.isUserLoggedIn();
+
+  checkBucket(): void {
+    this.isLoggedIn = this.authService.isUserLoggedIn;
   }
 }
