@@ -18,4 +18,8 @@ export class MeratedService {
     return this.http.get(this.URL_ratedByMe + id, { withCredentials: true } );
   }
 
+  setNewRatForBook(book: object, id: string): Observable<object>{
+    return this.http.put('http://localhost:8081/api/service/authentication/authenticated/update-book/' + id, book);
+  }
+
 }

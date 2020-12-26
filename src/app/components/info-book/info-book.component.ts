@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books.service';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../services/auth.service';
 import {MeratedService} from '../../services/merated.service';
 import {BookDTO} from '../../model/bookDTO';
+import {User} from "../../model/user";
+import {Book} from "../../model/Book";
+
 
 @Component({
   selector: 'app-info-book',
@@ -20,9 +23,13 @@ export class InfoBookComponent implements OnInit {
 
   rated: number;
 
+  // @ts-ignore
+  bookWithNewRat: Book;
+
   bookDTO: Observable<any>;
 
-  constructor(private activateRoute: ActivatedRoute, private booksService: BooksService, private authService: AuthService, private meratedService: MeratedService) {
+  constructor(private activateRoute: ActivatedRoute, private booksService: BooksService, private authService: AuthService, private meratedService: MeratedService,
+              private router: Router) {
     this.id = activateRoute.snapshot.params.id;
   }
 
@@ -31,18 +38,31 @@ export class InfoBookComponent implements OnInit {
     this.reloadData();
   }
 
-  ratedBook(){
+  newrat(): void {
+    this.bookWithNewRat = new Book(this.rated);
+    this.meratedService.setNewRatForBook(this.bookWithNewRat, String(this.id)).subscribe(data => {
+        console.log(data);
+        this.bookWithNewRat = new Book(this.rated);
+        this.router.navigate(['/books']);
+      },
+      error => console.log(error));
+  }
 
+
+  onSubmit(): void {
+
+    this.newrat();
   }
 
 
   reloadData() {
-    this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));
     this.book = this.booksService.getBookInfo(String(this.id));
     this.isLoggedIn = this.authService.isLoggedIn();
-    console.log(this.authService.getLoggedInUserName());
-    console.log(this.bookDTO);
-    this.bookDTO.subscribe(res => console.log(res));
+    if(this.isLoggedIn) {
+      this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));
+      console.log(this.authService.getLoggedInUserName());
+      console.log(this.bookDTO);
+    }
   }
 
 }

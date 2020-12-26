@@ -4,13 +4,19 @@
     <img src={{bookinfo.urlImage}} alt="Изображение книги">
     <div *ngIf="isLoggedIn; then authorized"></div>
     <ng-template #authorized>
-      <form (ngSubmit)="ratedBook()">
+      <div *ngIf="bookDTO | async as bookdto">
+        <div *ngIf="!bookdto.meRated; then ratedme; else noratedme"></div>
+        <ng-template #ratedme>
+      <form (ngSubmit)="onSubmit()">
         <label for="username"><b>Оцените книгу:</b></label>
-
-        <input id="username" type="number" min="0" max="10" placeholder="оценка" name="login" required [(ngModel)] = "rated">
-
+        <input id="username" type="number" min="0" max="10" placeholder="оценка" name="login" [(ngModel)]="rated">
         <button style="margin-bottom: 30px;" type="submit" class="btn btn-primary">Оценить</button>
       </form>
+        </ng-template>
+        <ng-template #noratedme>
+          <a>Вы уже ставили оценку этой книге</a>
+        </ng-template>
+      </div>
     </ng-template>
     <a>Рейтинг: <span style="font-weight: bold">{{bookinfo.rating}}</span></a>
     <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>
@@ -18,9 +24,6 @@
   <div class="text">
     <a style="font-weight: bold">{{bookinfo.name}}</a>
     <a>Автор: {{bookinfo.author.fullName}}</a>
-    <div *ngIf="bookDTO | async as bookdto" class="book">
-      <a> Автор{{bookdto.meRated}}</a> НЕ МОГУ ЭТО ВЫВЕСТИ
-    </div>
     <a>Жанр: {{bookinfo.genre.name}}</a>
     <a style="color: indigo">Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
     <button class="btn btn-dark" type="button">В корзину</button>
