@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+  height: 407px;
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
+}
+.container img {
+  margin-top: 30px;
+}
+.container li {
+  padding-top: 10px;
+  list-style-type: none;
+}
+
+.sub {
+  width: 100%;
+}
+
+.sub button {
+  background: inherit;
+  border: none;
+}

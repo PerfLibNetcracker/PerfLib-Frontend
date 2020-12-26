@@ -25,6 +25,9 @@
       <hr>
       Вы вошли как <span> {{this.authService.getLoggedInUserName()}}</span>
       <hr>
+      <a style="color: #1b5f5f;" routerLink="/subscriptions">Оформить подписку</a>
+      <br>
+      <hr>
       <button (click)="handleLogout()" style="margin-bottom: 5%; border: none; color: black; background: silver;"
               type="submit"
               class="btn btn-primary">Выйти
