@@ -43,15 +43,14 @@ export class InfoBookComponent implements OnInit {
     this.meratedService.setNewRatForBook(this.bookWithNewRat, String(this.id)).subscribe(data => {
         console.log(data);
         this.bookWithNewRat = new Book(this.rated);
-        this.router.navigate(['/books']);
       },
       error => console.log(error));
   }
 
 
   onSubmit(): void {
-
     this.newrat();
+    this.reloadData();
   }
 
 
