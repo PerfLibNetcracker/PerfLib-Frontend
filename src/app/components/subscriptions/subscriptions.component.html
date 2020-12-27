@@ -1,29 +1,39 @@
 <div class="container">
-  <div class="sub">
-    <p style="font-weight: bolder; font-size: 20px;">Подписка на <span style="color: #1b5f5f">7</span> дней</p>
-    <br>
-    <p style="text-decoration-line: underline ">Что вы получите:</p>
-    <br>
-    <ul>
-      <li style="color: #ff6d00 ">3 любые книги на выбор бесплатно</li>
-      <li style="color: #e03211">Возможность просмотра содержания</li>
-      <li style="color: #f30707">Доступ к аудио-версиям книг</li>
-    </ul>
-    <form>
-      <button type="submit"><img width="200px" height="50px" alt="SUBSCRIBE" src="../../assets/images/subscribe.png"/>
-      </button>
-    </form>
-  </div>
-  <div class="sub">
-    <p style="font-weight: bolder; font-size: 20px;">Подписка на <span style="color: #1b5f5f">30</span> дней</p>
-    <br>
-    <p style="text-decoration-line: underline ">Что вы получите:</p>
-    <br>
-    <ul>
-      <li style="color: #ff6b00 ">5 любых книг на выбор бесплатно</li>
-      <li style="color: #e03211">Возможность просмотра содержания и краткого описания</li>
-      <li style="color: #f30707">Доступ к аудио-версиям книг</li>
-    </ul>
-    <img width="200px" height="50px" alt="SUBSCRIBE" src="../../assets/images/subscribe.png"/>
+  <div *ngIf="userDTO | async as user">
+    <div *ngIf="!user.hasSub; then hasSubscription; else hasNotSubscription"></div>
+    <ng-template #hasSubscription>
+      <div class="sub">
+        <p style="font-weight: bolder; font-size: 20px;">Подписка на <span style="color: #1b5f5f">7</span> дней</p>
+        <br>
+        <p style="text-decoration-line: underline ">Что вы получите:</p>
+        <br>
+        <ul>
+          <li style="color: #ff6d00 ">3 любые книги на выбор бесплатно</li>
+          <li style="color: #e03211">Возможность просмотра содержания</li>
+          <li style="color: #f30707">Доступ к аудио-версиям книг</li>
+        </ul>
+        <form (ngSubmit)="submitSevenDays()">
+          <button type="submit"><img width="200px" height="50px" alt="SUBSCRIBE" src="../../assets/images/subscribe.png"/>
+          </button>
+        </form>
+      </div>
+      <div class="sub">
+        <p style="font-weight: bolder; font-size: 20px;">Подписка на <span style="color: #1b5f5f">30</span> дней</p>
+        <br>
+        <p style="text-decoration-line: underline ">Что вы получите:</p>
+        <br>
+        <ul>
+          <li style="color: #ff6b00 ">5 любых книг на выбор бесплатно</li>
+          <li style="color: #e03211">Возможность просмотра содержания и краткого описания</li>
+          <li style="color: #f30707">Доступ к аудио-версиям книг</li>
+        </ul>
+        <form (ngSubmit)="submitThirty()">
+          <button type="submit"><img width="200px" height="50px" alt="SUBSCRIBE" src="../../assets/images/subscribe.png"/></button>
+        </form>
+      </div>
+  </ng-template>
+    <ng-template #hasNotSubscription>
+      <a class="sub">Вы подписаны</a>
+    </ng-template>
   </div>
 </div>

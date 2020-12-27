@@ -19,13 +19,19 @@
       </div>
     </ng-template>
     <a>Рейтинг: <span style="font-weight: bold">{{bookinfo.rating}}</span></a>
-    <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>
+<!--    <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>-->
   </div>
   <div class="text">
     <a style="font-weight: bold">{{bookinfo.name}}</a>
     <a>Автор: {{bookinfo.author.fullName}}</a>
     <a>Жанр: {{bookinfo.genre.name}}</a>
     <a style="color: indigo">Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
+    <div *ngIf="userDTO | async as userdto">
+      <div *ngIf="userdto.hasSub; then hasSubscription"></div>
+      <ng-template #hasSubscription>
+        <a href="https://potter-1.bib.bz/">Читать по подписке!</a>
+      </ng-template>
+    </div>
     <button class="btn btn-dark" type="button">В корзину</button>
   </div>
 </div>

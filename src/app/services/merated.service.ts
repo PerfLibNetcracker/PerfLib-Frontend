@@ -1,9 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {BookDTO} from '../model/bookDTO';
-import {tap} from "rxjs/operators";
-import {Book} from "../model/Book";
 
 @Injectable({
   providedIn: 'root'

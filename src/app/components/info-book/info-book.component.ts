@@ -4,9 +4,8 @@ import {BooksService} from '../../services/books.service';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../services/auth.service';
 import {MeratedService} from '../../services/merated.service';
-import {BookDTO} from '../../model/bookDTO';
-import {User} from "../../model/user";
-import {Book} from "../../model/Book";
+import {Book} from '../../model/Book';
+import {SubscriptionService} from '../../services/subscription.service';
 
 
 @Component({
@@ -23,13 +22,14 @@ export class InfoBookComponent implements OnInit {
 
   rated: number;
 
-  // @ts-ignore
   bookWithNewRat: Book;
 
   bookDTO: Observable<any>;
 
+  userDTO: Observable<any>;
+
   constructor(private activateRoute: ActivatedRoute, private booksService: BooksService, private authService: AuthService, private meratedService: MeratedService,
-              private router: Router) {
+              private router: Router, private subscriptionService: SubscriptionService) {
     this.id = activateRoute.snapshot.params.id;
   }
 
@@ -47,17 +47,16 @@ export class InfoBookComponent implements OnInit {
       error => console.log(error));
   }
 
-
   onSubmit(): void {
     this.newrat();
     this.reloadData();
   }
 
-
   reloadData() {
     this.book = this.booksService.getBookInfo(String(this.id));
     this.isLoggedIn = this.authService.isLoggedIn();
     if(this.isLoggedIn) {
+      this.userDTO = this.subscriptionService.checkSubscription();
       this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));
       console.log(this.authService.getLoggedInUserName());
       console.log(this.bookDTO);
