@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: calc(50% - 10px) calc(50% - 10px);
   gap: 20px;
+  height: calc(100vh - 220px);
 }
 
 .imageBook {
