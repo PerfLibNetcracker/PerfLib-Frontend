@@ -24,11 +24,12 @@ export class AuthService {
   }
   // tslint:disable-next-line:typedef
   authService(username: string, password: string) {
+    let basicAuthToken = this.createBasicAuthToken(username, password);
     return this.http.get('http://localhost:8081/api/service/authentication/authenticated/',
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
       this.username = username;
       this.password = password;
-      this.registerSuccessfulLogin(username, password);
+      this.registerSuccessfulLogin(basicAuthToken);
       this.isUserLoggedIn = true;
     }));
   }
@@ -37,8 +38,8 @@ export class AuthService {
   }
 
 
-  registerSuccessfulLogin(username, password): void {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
+  registerSuccessfulLogin(basicAuthToken): void {
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, basicAuthToken);
   }
 
   logout(): void {
@@ -54,9 +55,9 @@ export class AuthService {
   }
 
   getLoggedInUserName(): any {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    if (user === null) { return ''; }
-    return user;
+    var usernameForView = atob(sessionStorage.getItem('authenticatedUser').substr(6));
+    if (usernameForView.split(':')[0] === null) { return ''; }
+    return usernameForView.split(':')[0];
   }
 
   createUser(user: object): Observable<object> {

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class HttpinterceptorService implements HttpInterceptor{
-
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   constructor(private authService: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -13,7 +13,7 @@ export class HttpinterceptorService implements HttpInterceptor{
       const authReq = req.clone({
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Authorization': `Basic ${window.btoa(this.authService.username + ":" + this.authService.password)}`
+          'Authorization': sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
         })
       });
       return next.handle(authReq);
