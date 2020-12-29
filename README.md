@@ -1,5 +1,7 @@
 **Для сборки и запуска докерфайла:**
+
 `docker build -t angular/perflib-frontend-docker .` в корне директории
+
 Запуск через:
 `docker run -d -p 4200:4200 angular/perflib-frontend-docker`
 # PerfLib

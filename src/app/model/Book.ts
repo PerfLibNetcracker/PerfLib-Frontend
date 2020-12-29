@@ -1,7 +1,7 @@
 import {Author} from './Author';
 import {Genre} from './Genre';
 
-export interface Book {
+export class Book {
   id: number;
   urlImage: string;
   name: string;
@@ -12,4 +12,9 @@ export interface Book {
   authorId: number;
   author: Author;
   genre: Genre;
+  constructor(theRating: number) {
+    this.rating = theRating;
+  }
+
+
 }
