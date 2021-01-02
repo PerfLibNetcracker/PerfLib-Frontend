@@ -15,6 +15,6 @@ spec:
       containers:
         - name: frontend
           imagePullPolicy: Never
-          image: frontend_perflib:latest
+          image: plyshka/frontend_perflib:latest
           ports:
             - containerPort: 4200
