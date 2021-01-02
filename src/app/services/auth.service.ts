@@ -2,6 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+
+const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;
+const POST_AUTHENTICATED = `${API_ROOT}/registration`;
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +29,7 @@ export class AuthService {
   // tslint:disable-next-line:typedef
   authService(username: string, password: string) {
     let basicAuthToken = this.createBasicAuthToken(username, password);
-    return this.http.get('http://localhost:8081/api/service/authentication/authenticated/',
+    return this.http.get(API_ROOT,
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
       this.username = username;
       this.password = password;
@@ -61,6 +65,6 @@ export class AuthService {
   }
 
   createUser(user: object): Observable<object> {
-    return this.http.post('http://localhost:8081/api/service/authentication/registration/', user);
+    return this.http.post(POST_AUTHENTICATED, user);
   }
 }
