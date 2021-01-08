@@ -32,6 +32,16 @@
         <a href="https://potter-1.bib.bz/">Читать по подписке!</a>
       </ng-template>
     </div>
-    <button class="btn btn-dark" type="button">В корзину</button>
+      <div *ngIf="userForBoughtDTO | async as userfbdto">
+        <div *ngIf="userfbdto.bought; then bought; else didntbought"></div>
+        <ng-template #bought>
+          <button class="btn btn-dark" type="submit" onclick="location.href='https://avidreaders.ru/api/get.php?b=13640&f=pdf'">Скачать</button>
+        </ng-template>
+        <ng-template #didntbought>
+          <form (ngSubmit)="onSubmitButtonBuy()">
+            <button class="btn btn-dark" type="submit">Купить</button>
+          </form>
+        </ng-template>
+    </div>
   </div>
 </div>

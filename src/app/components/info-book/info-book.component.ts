@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books.service';
-import {Observable} from 'rxjs';
+import {Observable, timer} from 'rxjs';
 import {AuthService} from '../../services/auth.service';
 import {MeratedService} from '../../services/merated.service';
 import {Book} from '../../model/Book';
 import {SubscriptionService} from '../../services/subscription.service';
+import {BoughtService} from "../../services/bought.service";
 
 
 @Component({
@@ -30,8 +31,10 @@ export class InfoBookComponent implements OnInit {
 
   userForUsername: Observable<any>;
 
+  userForBoughtDTO: Observable<any>;
+
   constructor(private activateRoute: ActivatedRoute, private booksService: BooksService, private authService: AuthService, private meratedService: MeratedService,
-              private router: Router, private subscriptionService: SubscriptionService) {
+              private router: Router, private subscriptionService: SubscriptionService, private boughtService: BoughtService) {
     this.id = activateRoute.snapshot.params.id;
   }
 
@@ -51,9 +54,9 @@ export class InfoBookComponent implements OnInit {
 
   onSubmit(): void {
     this.newrat();
+    this.router.navigate(['/info-book/' + this.id]);
     this.reloadData();
   }
-
 
   reloadData() {
     this.isLoggedIn = this.authService.isLoggedIn();
@@ -61,8 +64,18 @@ export class InfoBookComponent implements OnInit {
       this.userForUsername = this.authService.getLoggedInUserName();
       this.userDTO = this.subscriptionService.checkSubscription();
       this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));
+      this.userForBoughtDTO = this.boughtService.getInfoAboutBoughtBooks(String(this.id));
     }
     this.book = this.booksService.getBookInfo(String(this.id));
+  }
+
+  onSubmitButtonBuy(): void {
+    this.boughtService.userDoBuy(String(this.id)).subscribe(data => {
+        console.log(data);
+      },
+      error => console.log(error));
+    this.router.navigate(['/info-book/' + this.id]);
+    this.reloadData();
   }
 
 }
