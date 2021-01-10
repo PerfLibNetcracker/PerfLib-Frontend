@@ -30,6 +30,7 @@ p {
 }
 
 .slider-container {
+  min-height: calc(100vh - 335px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
