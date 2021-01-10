@@ -16,12 +16,12 @@
       <input id="username" type="text" placeholder="Логин" name="login" required [(ngModel)]="user.username">
 
       <label for="password"><b>Пароль<span>*</span></b></label>
-      <input id="password" type="password" placeholder="Придумайте пароль" name="psw" required
+      <input id="password" type="password" placeholder="6 симовлов" name="psw" required
              [(ngModel)]="user.password">
 
       <label for="passwordRepeat"><b>Повторите пароль<span>*</span></b></label>
-      <input id="passwordRepeat" type="password" placeholder="Повторите пароль" name="psw-repeat" required>
-      <p>Регистрируясь, Вы соглашаетесь с <a href="#">Политикой</a></p>
+      <input id="passwordRepeat" type="password" placeholder="Повторите" name="psw-repeat" required>
+      <p style="font-size: 0.7em;">Регистрируясь, Вы соглашаетесь с <a href="#">Политикой</a></p>
       <button style="margin-bottom: 30px;" type="submit" class="registerbtn">Зарегистрироваться</button>
     </div>
   </form>

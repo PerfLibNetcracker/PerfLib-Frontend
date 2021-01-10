@@ -8,6 +8,7 @@
 
 input::placeholder {
   font-weight: bold;
+  font-size: 1em;
   text-align: center;
   color: #1b5f5f;
 }
@@ -16,14 +17,16 @@ input {
   border: none;
   height: 50px;
   width: calc(100% - 2px);
+  background: inherit;
 }
 
 input:hover {
-  border: 1px solid grey;
+  background: #c6dbd1;
+  opacity: .8;
 }
 
 input:focus {
-  border: 2px solid grey;
+  border: none;
   outline: none;
   outline-offset: 0;
 }
@@ -63,6 +66,10 @@ input:focus::placeholder {
   width: 70%;
 }
 
+#signInButton:hover {
+  background: #72b5aa;
+}
+
 span {
   font-weight: bold;
   color: #071f0a;
@@ -72,4 +79,8 @@ a {
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+a:hover {
+  color: #884902;
 }

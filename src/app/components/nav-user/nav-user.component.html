@@ -12,10 +12,12 @@
         <input type="text" [(ngModel)]="username" name="authEmail"
                id="authEmail" placeholder="Логин">
       </div>
+      <hr>
       <div class="form-group">
         <input type="password" [(ngModel)]="password" id="authPassword"
                placeholder="Пароль" name="password">
       </div>
+      <hr>
       <button id="signInButton" (click)="handleLogin()" type="button"
               class="btn btn-primary">Войти
       </button>

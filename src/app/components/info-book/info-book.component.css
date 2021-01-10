@@ -1,6 +1,7 @@
 .globalWrapContainer {
   min-height: calc(100vh - 220px);
 }
+
 .book {
   padding-top: 20px;
   padding-bottom: 51px;
@@ -23,6 +24,7 @@
 .imageBook img {
   height: 400px;
   width: 300px;
+  padding-bottom: 20px;
 }
 
 .text {

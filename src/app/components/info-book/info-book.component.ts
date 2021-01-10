@@ -6,7 +6,7 @@ import {AuthService} from '../../services/auth.service';
 import {MeratedService} from '../../services/merated.service';
 import {Book} from '../../model/Book';
 import {SubscriptionService} from '../../services/subscription.service';
-import {BoughtService} from "../../services/bought.service";
+import {BoughtService} from '../../services/bought.service';
 
 
 @Component({
@@ -33,8 +33,10 @@ export class InfoBookComponent implements OnInit {
 
   userForBoughtDTO: Observable<any>;
 
-  constructor(private activateRoute: ActivatedRoute, private booksService: BooksService, private authService: AuthService, private meratedService: MeratedService,
-              private router: Router, private subscriptionService: SubscriptionService, private boughtService: BoughtService) {
+  constructor(private activateRoute: ActivatedRoute, private booksService: BooksService,
+              private authService: AuthService, private meratedService: MeratedService,
+              private router: Router, private subscriptionService: SubscriptionService,
+              private boughtService: BoughtService) {
     this.id = activateRoute.snapshot.params.id;
   }
 
@@ -59,9 +61,9 @@ export class InfoBookComponent implements OnInit {
     this.reloadData();
   }
 
-  reloadData() {
+  reloadData(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       this.userForUsername = this.authService.getLoggedInUserName();
       this.userDTO = this.subscriptionService.checkSubscription();
       this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));

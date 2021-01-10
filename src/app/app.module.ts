@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpinterceptorService} from './services/httpinterceptor.service';
 import { NavBucketComponent } from './components/nav-bucket/nav-bucket.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+import { BuyFormComponent } from './components/buy-form/buy-form.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SubscriptionsComponent } from './components/subscriptions/subscriptions
     NavUserComponent,
     RegistrationComponent,
     NavBucketComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    BuyFormComponent
   ],
   imports: [
     RouterModule,
