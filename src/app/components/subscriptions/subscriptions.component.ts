@@ -12,6 +12,7 @@ import {Book} from "../../model/Book";
 export class SubscriptionsComponent implements OnInit {
 
   userDTO: Observable<any>;
+  infoAboutSubscription: Observable<any>;
 
   constructor(private subscriptionService: SubscriptionService, private router: Router) {
 
@@ -24,6 +25,7 @@ export class SubscriptionsComponent implements OnInit {
 
   reloadData(): void {
     this.userDTO = this.subscriptionService.checkSubscription();
+    this.infoAboutSubscription = this.subscriptionService.getInfoAboutSubscription();
   }
 
   submitSevenDays(): void {

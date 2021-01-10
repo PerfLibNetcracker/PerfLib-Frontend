@@ -54,6 +54,7 @@ export class InfoBookComponent implements OnInit {
 
   onSubmit(): void {
     this.newrat();
+    this.reloadData();
     this.router.navigate(['/info-book/' + this.id]);
     this.reloadData();
   }
@@ -74,6 +75,17 @@ export class InfoBookComponent implements OnInit {
         console.log(data);
       },
       error => console.log(error));
+    this.reloadData();
+    this.router.navigate(['/info-book/' + this.id]);
+    this.reloadData();
+  }
+
+  onSubmitButtonBuyBySubscription(): void {
+    this.boughtService.userDoBuyBySubscription(String(this.id)).subscribe(data => {
+        console.log(data);
+      },
+      error => console.log(error));
+    this.reloadData();
     this.router.navigate(['/info-book/' + this.id]);
     this.reloadData();
   }

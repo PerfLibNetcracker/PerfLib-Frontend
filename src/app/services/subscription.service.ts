@@ -6,6 +6,7 @@ import {environment} from '../../environments/environment';
 const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;
 const GET_SUBSCRIPTION_STATUS = `${API_ROOT}/check-subscription/`;
 const POST_SUBSCRIPTION = `${API_ROOT}/add-subscription/`;
+const GET_INFO_ABOUT_SUBSCRIPTION = `${API_ROOT}/check-subscription-info`;
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,8 @@ export class SubscriptionService {
   }
   addSubscription(days: string): Observable<any> {
     return this.http.post(POST_SUBSCRIPTION + days, {withCredentials: true});
+  }
+  getInfoAboutSubscription(): Observable<any>{
+    return this.http.get(GET_INFO_ABOUT_SUBSCRIPTION, {withCredentials: true});
   }
 }

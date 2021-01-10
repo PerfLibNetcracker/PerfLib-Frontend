@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;
 const GET_BOUGHT_BOOKS_BY_ME = `${API_ROOT}/check-bought/`;
 const GET_USER_DO_BUY = `${API_ROOT}/add-book-for-bought-books/`;
+const GET_USER_DO_BUY_BY_SUBSCRIPTION = `${API_ROOT}/add-book-for-bought-books-by-subscription/`;
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class BoughtService {
 
   userDoBuy(id: string): Observable<any>{
     return this.http.get(GET_USER_DO_BUY + id, {withCredentials: true} );
+  }
+
+  userDoBuyBySubscription(id: string): Observable<any>{
+    return this.http.get(GET_USER_DO_BUY_BY_SUBSCRIPTION + id, {withCredentials: true});
   }
 }
