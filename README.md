@@ -3,6 +3,7 @@
 `npm install ngx-audio-player --save` в корне директории
 
 `ng add @angular/material` в корне директории
+
 **Для сборки и запуска докерфайла:**
 
 `docker build -t angular/perflib-frontend-docker .` в корне директории
