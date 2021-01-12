@@ -35,6 +35,11 @@
         <ng-template #hasSubscription>
           <button class="btn" style="background: #1b5f5f">
             <a style="text-decoration: none; color: white" href="https://potter-1.bib.bz/">Читать (подписка)</a></button>
+          <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
+                            muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions"
+                            [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider"
+                            [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration"
+                            [expanded]="true"></ngx-audio-player><br>
         </ng-template>
       </div>
       <div *ngIf="userForBoughtDTO | async as userfbdto">

@@ -15,6 +15,8 @@ import {HttpinterceptorService} from './services/httpinterceptor.service';
 import { NavBucketComponent } from './components/nav-bucket/nav-bucket.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { BuyFormComponent } from './components/buy-form/buy-form.component';
+import {NgxAudioPlayerModule} from 'ngx-audio-player';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { BuyFormComponent } from './components/buy-form/buy-form.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxAudioPlayerModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

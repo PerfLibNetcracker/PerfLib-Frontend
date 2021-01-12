@@ -7,6 +7,7 @@ import {MeratedService} from '../../services/merated.service';
 import {Book} from '../../model/Book';
 import {SubscriptionService} from '../../services/subscription.service';
 import {BoughtService} from '../../services/bought.service';
+import {Track} from "ngx-audio-player";
 
 
 @Component({
@@ -32,6 +33,22 @@ export class InfoBookComponent implements OnInit {
   userForUsername: Observable<any>;
 
   userForBoughtDTO: Observable<any>;
+
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  msaapPageSizeOptions = [2, 4, 6];
+  msaapDisplayVolumeControls = true;
+  msaapDisplayArtist = false;
+  msaapDisplayDuration = false;
+  msaapDisablePositionSlider = true;
+
+// Material Style Advance Audio Player Playlist
+  msaapPlaylist: Track[] = [
+    {
+      title: 'Аудио версия книги',
+      link: 'assets/mp3/01-01.mp3',
+    },
+  ];
 
   constructor(private activateRoute: ActivatedRoute, private booksService: BooksService,
               private authService: AuthService, private meratedService: MeratedService,
