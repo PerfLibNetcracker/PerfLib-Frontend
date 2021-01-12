@@ -1,61 +1,60 @@
 <div class="globalWrapContainer">
-<div *ngIf="book | async as bookinfo" class="book">
+  <div *ngIf="book | async as bookinfo" class="book">
 
-  <div class="imageBook">
-    <img src={{bookinfo.urlImage}} alt="Изображение книги">
-    <div *ngIf="isLoggedIn; then authorized"></div>
-    <ng-template #authorized>
-      <div *ngIf="bookDTO | async as bookdto">
-        <div *ngIf="!bookdto.meRated; then ratedme; else noratedme"></div>
-        <ng-template #ratedme>
-          <form (ngSubmit)="onSubmit()">
-            <label for="username"><b>Оцените книгу:</b></label>
-            <input id="username" type="number" min="1" max="10" placeholder="оценка" name="login" [(ngModel)]="rated">
-            <button style="margin-bottom: 30px;" type="submit" class="btn btn-primary">Оценить</button>
-          </form>
-        </ng-template>
-        <ng-template #noratedme>
-          <a>Вы уже ставили оценку этой книге</a>
-        </ng-template>
-      </div>
-    </ng-template>
-    <a>Рейтинг: <span style="font-weight: bold; color: #1b5f5f">{{bookinfo.rating}}</span> /10</a>
-    <!--    <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>-->
-  </div>
-  <div class="text">
-    <a style="font-weight: bold">{{bookinfo.name}}</a>
-    <a>Автор: {{bookinfo.author.fullName}}</a>
-    <a>Жанр: {{bookinfo.genre.name}}</a>
-    <a style="color: indigo">Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
-    <div *ngIf="userDTO | async as userdto">
-      <div *ngIf="userdto.hasSub; then hasSubscription"></div>
-
-      <ng-template #hasSubscription>
-        <a href="https://potter-1.bib.bz/">Читать по подписке!</a>
-      </ng-template>
-
-    </div>
-    <div *ngIf="userForBoughtDTO | async as userfbdto">
-      <div *ngIf="userfbdto.bought; then bought; else didntbought"></div>
-      <ng-template #bought>
-        <button class="btn btn-dark" type="submit"
-                onclick="location.href='https://avidreaders.ru/api/get.php?b=13640&f=pdf'">Скачать
-        </button>
-      </ng-template>
-      <ng-template #didntbought>
-        <div *ngIf="userDTO | async as userdto1">
-          <div *ngIf="userdto1.hasFreeBook; then hasFreeBook"></div>
-          <ng-template #hasFreeBook>
-            <form (ngSubmit)="onSubmitButtonBuyBySubscription()">
-              <button class="btn btn-dark" type="submit">Получить по подписке бесплатно!</button>
+    <div class="imageBook">
+      <img src={{bookinfo.urlImage}} alt="Изображение книги">
+      <div *ngIf="isLoggedIn; then authorized"></div>
+      <ng-template #authorized>
+        <div *ngIf="bookDTO | async as bookdto">
+          <div *ngIf="!bookdto.meRated; then ratedme; else noratedme"></div>
+          <ng-template #ratedme>
+            <form (ngSubmit)="onSubmit()">
+              <label for="username"><b>Оцените книгу:</b></label>
+              <input id="username" type="number" min="1" max="10" placeholder="оценка" name="login" [(ngModel)]="rated">
+              <button style="margin-bottom: 30px;" type="submit" class="btn btn-primary">Оценить</button>
             </form>
           </ng-template>
-          <form (ngSubmit)="onSubmitButtonBuy()">
-            <button class="btn btn-dark" type="submit">Купить</button>
-          </form>
+          <ng-template #noratedme>
+            <a>Вы уже ставили оценку этой книге</a>
+          </ng-template>
         </div>
       </ng-template>
+      <a>Рейтинг: <span style="font-weight: bold; color: #1b5f5f">{{bookinfo.rating}}</span> /10</a>
+      <!--    <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>-->
+    </div>
+    <div class="text">
+      <a style="font-weight: bold">{{bookinfo.name}}</a>
+      <a>Автор: {{bookinfo.author.fullName}}</a>
+      <a>Жанр: {{bookinfo.genre.name}}</a>
+      <a style="color: indigo">Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
+      <button class="btn btn-dark" type="submit" [routerLink]="['/buy', bookinfo.id]">Оформить заказ печатной версии книги</button>
+      <div *ngIf="userDTO | async as userdto">
+        <div *ngIf="userdto.hasSub; then hasSubscription"></div>
+        <ng-template #hasSubscription>
+          <a href="https://potter-1.bib.bz/">Читать по подписке!</a>
+        </ng-template>
+      </div>
+      <div *ngIf="userForBoughtDTO | async as userfbdto">
+        <div *ngIf="userfbdto.bought; then bought; else didntbought"></div>
+        <ng-template #bought>
+          <button class="btn btn-dark" type="submit"
+                  onclick="location.href='https://avidreaders.ru/api/get.php?b=13640&f=pdf'">Скачать
+          </button>
+        </ng-template>
+        <ng-template #didntbought>
+          <div *ngIf="userDTO | async as userdto1">
+            <div *ngIf="userdto1.hasFreeBook; then hasFreeBook"></div>
+            <ng-template #hasFreeBook>
+              <form (ngSubmit)="onSubmitButtonBuyBySubscription()">
+                <button class="btn btn-dark" type="submit">Получить по подписке бесплатно!</button>
+              </form>
+            </ng-template>
+            <form (ngSubmit)="onSubmitButtonBuy()">
+              <button class="btn btn-dark" type="submit">Купить</button>
+            </form>
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
-</div>
 </div>

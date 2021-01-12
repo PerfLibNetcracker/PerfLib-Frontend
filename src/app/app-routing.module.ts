@@ -15,7 +15,7 @@ const routes: Routes = [
    {path: 'registration', component: RegistrationComponent},
    {path: 'nav-user', component: NavUserComponent},
    {path: 'subscriptions', component: SubscriptionsComponent},
-   {path: 'buy', component: BuyFormComponent}
+   {path: 'buy/:id', component: BuyFormComponent}
 ];
 
 @NgModule({

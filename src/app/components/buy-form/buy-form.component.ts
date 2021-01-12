@@ -18,7 +18,7 @@ export class BuyFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.booksService.getBookInfo(String(this.id));
+    this.book = this.booksService.getBookInfo(String(this.id));
   }
 
 }
