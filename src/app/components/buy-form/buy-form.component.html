@@ -1,23 +1,19 @@
 <div class="globalContainer">
-  <form>
     <div class="container2">
-      <h2 style="text-align: center; color: #007a5b">Покупка книги</h2>
-      <hr>
       <div *ngIf="book | async as bookInfo" class="bookInfo">
         <div class="imageBook">
           <img src={{bookInfo.urlImage}} alt="Изображение книги">
           <p>{{bookInfo.name}}, {{bookInfo.author.fullName}}</p>
         </div>
       </div>
-      <br>
-      <form>
-        <label style="margin-bottom: 30px"><h5>Данные для покупки:</h5></label>
-        <br>
-        <input type="text" placeholder="Адрес отправки"/>
-      </form>
-      <br>
-      <button style="margin-bottom: 30px; margin-top: 10px" type="submit" class="btn btn-light">Отправить</button>
     </div>
-  </form>
+
+     <div class="container2">
+       <label style="margin-bottom: 30px"><h5>Данные для отправки книги</h5></label>
+       <input type="text" placeholder="Адрес получателя"/>
+       <br>
+       <p><button class="btn btn-dark" type="submit">Отправить</button></p>
+    </div>
+
 </div>
 

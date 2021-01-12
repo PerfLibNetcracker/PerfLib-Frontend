@@ -9,9 +9,9 @@
           <div *ngIf="!bookdto.meRated; then ratedme; else noratedme"></div>
           <ng-template #ratedme>
             <form (ngSubmit)="onSubmit()">
-              <label for="username"><b>Оцените книгу:</b></label>
-              <input id="username" type="number" min="1" max="10" placeholder="оценка" name="login" [(ngModel)]="rated">
-              <button style="margin-bottom: 30px;" type="submit" class="btn btn-primary">Оценить</button>
+              <label for="username"><b>Оценить:  </b></label>
+              <input style="width: 60px" id="username" type="number" min="1" max="10" placeholder="1..10" name="login" [(ngModel)]="rated">
+              <button style="margin-left: 10px" type="submit" class="btn btn-dark">Оценить</button>
             </form>
           </ng-template>
           <ng-template #noratedme>
@@ -20,18 +20,21 @@
         </div>
       </ng-template>
       <a>Рейтинг: <span style="font-weight: bold; color: #1b5f5f">{{bookinfo.rating}}</span> /10</a>
-      <!--    <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>-->
+      <a>Просмотров: <span style="font-weight: bold">{{bookinfo.totalViews}}</span></a>
     </div>
     <div class="text">
       <a style="font-weight: bold">{{bookinfo.name}}</a>
       <a>Автор: {{bookinfo.author.fullName}}</a>
       <a>Жанр: {{bookinfo.genre.name}}</a>
-      <a style="color: indigo">Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
-      <button class="btn btn-dark" type="submit" [routerLink]="['/buy', bookinfo.id]">Оформить заказ печатной версии книги</button>
+      <a>Цена: <span style="font-weight: bold">{{bookinfo.price}} руб.</span></a>
+    </div>
+    <div class="buttonsLayout">
+      <button class="btn btn-dark" type="submit" [routerLink]="['/buy', bookinfo.id]">Заказать печатную версию</button>
       <div *ngIf="userDTO | async as userdto">
         <div *ngIf="userdto.hasSub; then hasSubscription"></div>
         <ng-template #hasSubscription>
-          <a href="https://potter-1.bib.bz/">Читать по подписке!</a>
+          <button class="btn" style="background: #1b5f5f">
+            <a style="text-decoration: none; color: white" href="https://potter-1.bib.bz/">Читать (подписка)</a></button>
         </ng-template>
       </div>
       <div *ngIf="userForBoughtDTO | async as userfbdto">
@@ -46,11 +49,11 @@
             <div *ngIf="userdto1.hasFreeBook; then hasFreeBook"></div>
             <ng-template #hasFreeBook>
               <form (ngSubmit)="onSubmitButtonBuyBySubscription()">
-                <button class="btn btn-dark" type="submit">Получить по подписке бесплатно!</button>
+                <button class="btn" style="background: #1b5f5f;" type="submit">Бесплатно (подписка)</button>
               </form>
             </ng-template>
-            <form (ngSubmit)="onSubmitButtonBuy()">
-              <button class="btn btn-dark" type="submit">Купить</button>
+            <form style="width: 100%; display: flex; justify-items: center; justify-content: center;" (ngSubmit)="onSubmitButtonBuy()">
+              <button style="background: indigo " class="btn" type="submit">Купить</button>
             </form>
           </div>
         </ng-template>

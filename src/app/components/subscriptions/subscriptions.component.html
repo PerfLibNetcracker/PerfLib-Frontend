@@ -32,11 +32,11 @@
   </ng-template>
     <ng-template #hasNotSubscription>
       <div *ngIf="infoAboutSubscription | async as info" class="sub">
-        Вы подписаны
         <br>
-        Подписка окончится: <b>{{info.endTime}}</b>
+        <h3 style="font-weight: bold"> Вы подписаны! </h3>
         <br>
-        По подписке вы можете приобрести бесплатно <b>{{info.freeBook}}</b> книг
+        <p>Подписка окончится: <b>{{info.endTime}}</b></p>
+        <p>По подписке вы можете приобрести бесплатно <b>{{info.freeBook}}</b> книг</p>
       </div>
     </ng-template>
   </div>
