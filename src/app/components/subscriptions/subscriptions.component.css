@@ -1,3 +1,6 @@
+.wrapContainer {
+  min-height: calc(100vh - 220px);
+}
 .container2 {
   min-height: calc(100vh - 270px);
   display: flex;
