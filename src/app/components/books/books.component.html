@@ -16,8 +16,8 @@
       Авторы
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <div *ngFor="let book of books" class="item-menu">
-        <a class="dropdown-item" href="#">{{book.author.fullName}}</a>
+      <div *ngFor="let author of authors" class="item-menu">
+        <a class="dropdown-item" href="#">{{author.fullName}}</a>
       </div>
     </div>
   </div>

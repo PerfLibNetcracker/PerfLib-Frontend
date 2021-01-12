@@ -1,25 +1,44 @@
-.container {
+.container2 {
+  min-height: calc(100vh - 270px);
   display: flex;
   flex-direction: row;
-  gap: 200px;
-  height: calc(100vh - 270px);
   margin-top: 50px;
   text-align: center;
   width: 100%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
-.container img {
+.container2 img {
   margin-top: 30px;
 }
-.container li {
+.container2 li {
   padding-top: 10px;
   list-style-type: none;
+  color: #007049;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.container2 img:hover {
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  opacity: 1;
+  cursor: pointer;
 }
 
 .sub {
+  border: 4px solid #1b5f5f;
+  border-radius: 50px;
   width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 30px;
 }
 
 .sub button {
   background: inherit;
   border: none;
 }
+

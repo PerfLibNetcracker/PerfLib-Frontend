@@ -5,11 +5,13 @@ import {Book} from '../model/Book';
 import {tap} from 'rxjs/operators';
 import {Genre} from '../model/Genre';
 import {environment} from '../../environments/environment';
+import {Author} from '../model/Author';
 
 
 const API_ROOT = `${environment.apiDataService}/api/service/search`;
 const GET_BOOKS_ROUTE = `${API_ROOT}/find-all`;
 const GET_GENRES_ROUTE = `${API_ROOT}/find-all-genres`;
+const GET_AUTHORS_ROUTE = `${API_ROOT}/find-all-authors`;
 const GET_BOOK_BY_ID = API_ROOT;
 
 
@@ -27,6 +29,12 @@ export class BooksService {
 
   getGenresList(): Observable<Genre[]> {
     return this.http.get(GET_GENRES_ROUTE).pipe(tap((data: Genre[]) => {
+      return data;
+    }));
+  }
+
+  getAuthorsList(): Observable<Author[]> {
+    return this.http.get(GET_AUTHORS_ROUTE).pipe(tap((data: Author[]) => {
       return data;
     }));
   }
