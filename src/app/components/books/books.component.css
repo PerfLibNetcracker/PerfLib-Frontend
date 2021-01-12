@@ -20,6 +20,7 @@ nav {
 }
 
 .globalBookContainer {
+  min-height: calc(100vh - 340px);
   height: 100%;
   margin-top: 50px;
   display: grid;
