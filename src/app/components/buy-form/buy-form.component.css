@@ -41,7 +41,7 @@ hr {
 }
 
 input {
-  width: 50%;
+  width: 300px;
   border: none;
   border-radius: 10px;
   opacity: .9;
