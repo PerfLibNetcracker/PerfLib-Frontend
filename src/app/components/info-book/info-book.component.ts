@@ -1,38 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BooksService} from '../../services/books.service';
-import {Observable, timer} from 'rxjs';
-import {AuthService} from '../../services/auth.service';
-import {MeratedService} from '../../services/merated.service';
-import {Book} from '../../model/Book';
-import {SubscriptionService} from '../../services/subscription.service';
-import {BoughtService} from '../../services/bought.service';
-import {Track} from "ngx-audio-player";
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BooksService } from '../../services/books.service';
+import { Observable, timer } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { RatingService } from '../../services/rating.service';
+import { Book } from '../../model/Book';
+import { SubscriptionService } from '../../services/subscription.service';
+import { BoughtService } from '../../services/bought.service';
+import { Track } from 'ngx-audio-player';
+import { UserBookDto } from 'src/app/model/BookDTO';
+import { UserInfoDTO } from 'src/app/model/UserInfoDTO';
+import { UserBoughtBooksDTO } from 'src/app/model/UserForBoughtDTO';
 
 @Component({
   selector: 'app-info-book',
   templateUrl: './info-book.component.html',
-  styleUrls: ['./info-book.component.css']
+  styleUrls: ['./info-book.component.css'],
 })
 export class InfoBookComponent implements OnInit {
-  book: Observable<any>;
+  book: Observable<Book>;
 
   isLoggedIn: boolean;
 
   id: number;
 
-  rated: number;
+  rating: number;
 
   bookWithNewRat: Book;
 
-  bookDTO: Observable<any>;
+  bookDTO: Observable<UserBookDto>;
 
-  userDTO: Observable<any>;
+  userDTO: Observable<UserInfoDTO>;
 
   userForUsername: Observable<any>;
 
-  userForBoughtDTO: Observable<any>;
+  userForBoughtDTO: Observable<UserBoughtBooksDTO>;
 
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
@@ -42,7 +44,7 @@ export class InfoBookComponent implements OnInit {
   msaapDisplayDuration = false;
   msaapDisablePositionSlider = true;
 
-// Material Style Advance Audio Player Playlist
+  // Material Style Advance Audio Player Playlist
   msaapPlaylist: Track[] = [
     {
       title: 'Аудио версия книги',
@@ -50,31 +52,40 @@ export class InfoBookComponent implements OnInit {
     },
   ];
 
-  constructor(private activateRoute: ActivatedRoute, private booksService: BooksService,
-              private authService: AuthService, private meratedService: MeratedService,
-              private router: Router, private subscriptionService: SubscriptionService,
-              private boughtService: BoughtService) {
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private booksService: BooksService,
+    private authService: AuthService,
+    private RatingService: RatingService,
+    private router: Router,
+    private subscriptionService: SubscriptionService,
+    private boughtService: BoughtService
+  ) {
     this.id = activateRoute.snapshot.params.id;
   }
-
 
   ngOnInit(): void {
     this.reloadData();
   }
 
   newrat(): void {
-    this.bookWithNewRat = new Book(this.rated);
-    this.meratedService.setNewRatForBook(this.bookWithNewRat, String(this.id)).subscribe(data => {
+    this.bookWithNewRat = new Book(this.rating);
+    this.RatingService.setNewRatingForBook(
+      this.bookWithNewRat,
+      String(this.id)
+    ).subscribe(
+      (data) => {
         console.log(data);
-        this.bookWithNewRat = new Book(this.rated);
+        this.bookWithNewRat = new Book(this.rating);
       },
-      error => console.log(error));
+      (error) => console.log(error)
+    );
   }
 
   onSubmit(): void {
     this.newrat();
     this.reloadData();
-    this.router.navigate(['/info-book/' + this.id]);
+    this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();
   }
 
@@ -82,31 +93,36 @@ export class InfoBookComponent implements OnInit {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
       this.userForUsername = this.authService.getLoggedInUserName();
-      this.userDTO = this.subscriptionService.checkSubscription();
-      this.bookDTO = this.meratedService.getInfoAboutRated(String(this.id));
-      this.userForBoughtDTO = this.boughtService.getInfoAboutBoughtBooks(String(this.id));
+      this.userDTO = this.subscriptionService.getUserInfo();
+      this.bookDTO = this.RatingService.getInfoAboutRating(String(this.id));
+      this.userForBoughtDTO = this.boughtService.getInfoAboutBoughtBooks(
+        String(this.id)
+      );
     }
     this.book = this.booksService.getBookInfo(String(this.id));
   }
 
   onSubmitButtonBuy(): void {
-    this.boughtService.userDoBuy(String(this.id)).subscribe(data => {
+    this.boughtService.buyBook(String(this.id)).subscribe(
+      (data) => {
         console.log(data);
       },
-      error => console.log(error));
+      (error) => console.log(error)
+    );
     this.reloadData();
-    this.router.navigate(['/info-book/' + this.id]);
+    this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();
   }
 
   onSubmitButtonBuyBySubscription(): void {
-    this.boughtService.userDoBuyBySubscription(String(this.id)).subscribe(data => {
+    this.boughtService.buyBookBySubscription(String(this.id)).subscribe(
+      (data) => {
         console.log(data);
       },
-      error => console.log(error));
+      (error) => console.log(error)
+    );
     this.reloadData();
-    this.router.navigate(['/info-book/' + this.id]);
+    this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();
   }
-
 }

@@ -1,5 +1,5 @@
-import {Author} from './Author';
-import {Genre} from './Genre';
+import { Author } from './Author';
+import { Genre } from './Genre';
 
 export class Book {
   id: number;
@@ -15,6 +15,4 @@ export class Book {
   constructor(theRating: number) {
     this.rating = theRating;
   }
-
-
 }

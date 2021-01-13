@@ -1,6 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BooksService} from '../../services/books.service';
-import {Book} from '../../model/Book';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BooksService } from '../../services/books.service';
+import { Book } from '../../model/Book';
+import { AuthService } from '../../services/auth.service';
 
 const getPaginationFactor = (width: number) => {
   if (width >= 1260) {
@@ -22,11 +23,15 @@ const getPaginationFactor = (width: number) => {
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit, OnDestroy {
-  constructor(private booksService: BooksService) {
-  }
+  constructor(
+    private booksService: BooksService,
+    private authService: AuthService
+  ) {}
+
+  isLoggedIn: boolean;
 
   items: Book[] = [];
 
@@ -56,7 +61,8 @@ export class MainComponent implements OnInit, OnDestroy {
     this.arrPages = new Array(this.pages).fill(0).map((_, index) => index + 1);
     this.offset = 0;
     this.atStart = this.offset === 0;
-    this.atEnd = this.offset === this.totalPaginationPixels * (this.pages - 1) * -1;
+    this.atEnd =
+      this.offset === this.totalPaginationPixels * (this.pages - 1) * -1;
     this.currentPage = 1;
 
     this.sortedItems = this.arrPages.map((item, index) => {
@@ -66,11 +72,21 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     window.addEventListener('resize', this.resizeUpdate);
-    this.booksService.getBooksList().subscribe((data) => {
-      this.items = data;
-      this.numberOfSlides = data.length;
-      this.initSlider();
-    });
+    if (this.authService.isLoggedIn()) {
+      this.booksService
+        .getRecommendedBooksList(this.authService.username)
+        .subscribe((data) => {
+          this.items = data;
+          this.numberOfSlides = data.length;
+          this.initSlider();
+        });
+    } else {
+      this.booksService.getPopularBooksList().subscribe((data) => {
+        this.items = data;
+        this.numberOfSlides = data.length;
+        this.initSlider();
+      });
+    }
   }
 
   ngOnDestroy(): void {
@@ -78,14 +94,14 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   getTransformStyles = () => {
-    return {transform: `translateX(${this.offset}px)`};
-  }
+    return { transform: `translateX(${this.offset}px)` };
+  };
 
   getSpanStyles = (page: number) => {
     return {
       backgroundColor: `${page === this.currentPage ? 'red' : '#525665'}`,
     };
-  }
+  };
 
   resizeUpdate = () => {
     if (this.numberOfSlides === 0) {
@@ -107,7 +123,7 @@ export class MainComponent implements OnInit, OnDestroy {
     this.sortedItems = this.arrPages.map((item, index) => {
       return this.items.slice(index * this.scrollBy, item * this.scrollBy);
     });
-  }
+  };
 
   move = (direction: number) => {
     if (direction > 0 && !this.atEnd) {
@@ -120,5 +136,5 @@ export class MainComponent implements OnInit, OnDestroy {
       this.offset === this.totalPaginationPixels * (this.pages - 1) * -1;
     this.currentPage =
       -1 * Math.round(this.offset / this.totalPaginationPixels - 1);
-  }
+  };
 }

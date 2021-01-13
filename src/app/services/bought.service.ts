@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserBoughtBooksDTO } from '../model/UserForBoughtDTO';
+import { tap } from 'rxjs/operators';
 
 const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;
-const GET_BOUGHT_BOOKS_BY_ME = `${API_ROOT}/check-bought/`;
-const GET_USER_DO_BUY = `${API_ROOT}/add-book-for-bought-books/`;
-const GET_USER_DO_BUY_BY_SUBSCRIPTION = `${API_ROOT}/add-book-for-bought-books-by-subscription/`;
+const GET_BOUGHT_BOOKS_BY_USER = `${API_ROOT}/check-bought`;
+const POST_BUY_BOOK = `${API_ROOT}/add-book-for-bought-books`;
+const POST_BUY_BY_SUBSCRIPTION = `${API_ROOT}/add-book-for-bought-books-by-subscription`;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class BoughtService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getInfoAboutBoughtBooks(id: string): Observable<any> {
-    return this.http.get(GET_BOUGHT_BOOKS_BY_ME + id, { withCredentials: true } );
+  getInfoAboutBoughtBooks(id: string): Observable<UserBoughtBooksDTO> {
+    return this.http
+      .get(`${GET_BOUGHT_BOOKS_BY_USER}/${id}`, { withCredentials: true })
+      .pipe(tap((data: UserBoughtBooksDTO) => data));
   }
 
-  userDoBuy(id: string): Observable<any>{
-    return this.http.get(GET_USER_DO_BUY + id, {withCredentials: true} );
+  buyBook(id: string): Observable<any> {
+    return this.http.post(`${POST_BUY_BOOK}/${id}`, { withCredentials: true });
   }
 
-  userDoBuyBySubscription(id: string): Observable<any>{
-    return this.http.get(GET_USER_DO_BUY_BY_SUBSCRIPTION + id, {withCredentials: true});
+  buyBookBySubscription(id: string): Observable<any> {
+    return this.http.post(`${POST_BUY_BY_SUBSCRIPTION}/${id}`, {
+      withCredentials: true,
+    });
   }
 }

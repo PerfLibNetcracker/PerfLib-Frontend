@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
-import {User} from '../../model/user';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { User } from '../../model/User';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-
   user: User = new User();
   submitted = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   newUser(): void {
     this.submitted = false;
@@ -24,12 +22,14 @@ export class RegistrationComponent implements OnInit {
   }
 
   save(): void {
-    this.authService.createUser(this.user).subscribe(data => {
-      console.log(data);
-      this.user = new User();
-      this.router.navigate(['/books']);
-    },
-      error => console.log(error));
+    this.authService.createUser(this.user).subscribe(
+      (data) => {
+        console.log(data);
+        this.user = new User();
+        this.router.navigate(['/books']);
+      },
+      (error) => console.log(error)
+    );
   }
 
   onSubmit(): void {

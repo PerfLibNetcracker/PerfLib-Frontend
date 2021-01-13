@@ -1,16 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-user',
   templateUrl: './nav-user.component.html',
-  styleUrls: ['./nav-user.component.css']
+  styleUrls: ['./nav-user.component.css'],
 })
 export class NavUserComponent implements OnInit {
-
-
   isLoggedIn: boolean;
   username: string;
   password: string;
@@ -19,25 +16,31 @@ export class NavUserComponent implements OnInit {
   invalidLogin = false;
   loginSuccess = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, public authService: AuthService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.authStatus;
   }
 
   handleLogin(): void {
-    this.authService.authService(this.username, this.password).subscribe(() => {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage = 'Login Successful.';
-      this.isLoggedIn = true;
-      this.router.navigate(['/books']);
-    }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-      this.isLoggedIn = false;
-    });
+    this.authService.authService(this.username, this.password).subscribe(
+      () => {
+        this.invalidLogin = false;
+        this.loginSuccess = true;
+        this.successMessage = 'Login Successful.';
+        this.isLoggedIn = true;
+        this.router.navigate(['/books']);
+      },
+      () => {
+        this.invalidLogin = true;
+        this.loginSuccess = false;
+        this.isLoggedIn = false;
+      }
+    );
   }
 
   handleLogout(): void {

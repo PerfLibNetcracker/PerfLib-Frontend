@@ -2,7 +2,7 @@ FROM node:14.15.2 as builder
 EXPOSE 4200
 WORKDIR /app
 COPY package*.json /app/
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli ngx-audio-player
 COPY ./ /app/
 RUN ng add @ng-bootstrap/ng-bootstrap
 ARG configuration=production

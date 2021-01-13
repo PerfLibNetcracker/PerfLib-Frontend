@@ -8,9 +8,8 @@ describe('NavBucketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavBucketComponent ]
-    })
-    .compileComponents();
+      declarations: [NavBucketComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

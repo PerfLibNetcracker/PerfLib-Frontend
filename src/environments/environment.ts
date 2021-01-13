@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiDataService: 'http://localhost:8081',
-  apiAuthService: 'http://localhost:8082'
+  apiAuthService: 'http://localhost:8082',
 };
 
 /*
