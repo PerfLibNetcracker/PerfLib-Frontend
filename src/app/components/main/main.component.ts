@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BooksService } from '../../services/books.service';
 import { Book } from '../../model/Book';
 import { AuthService } from '../../services/auth.service';
+import { NavUserComponent } from '../nav-user/nav-user.component';
 
 const getPaginationFactor = (width: number) => {
   if (width >= 1260) {
@@ -29,9 +30,7 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(
     private booksService: BooksService,
     private authService: AuthService
-  ) {}
-
-  isLoggedIn: boolean;
+  ) { }
 
   items: Book[] = [];
 
@@ -72,20 +71,22 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     window.addEventListener('resize', this.resizeUpdate);
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.authStatus) {
       this.booksService
-        .getRecommendedBooksList(this.authService.username)
+        .getRecommendedBooksList(this.authService.userName)
         .subscribe((data) => {
           this.items = data;
           this.numberOfSlides = data.length;
           this.initSlider();
         });
     } else {
-      this.booksService.getPopularBooksList().subscribe((data) => {
-        this.items = data;
-        this.numberOfSlides = data.length;
-        this.initSlider();
-      });
+      this.booksService
+        .getPopularBooksList()
+        .subscribe((data) => {
+          this.items = data;
+          this.numberOfSlides = data.length;
+          this.initSlider();
+        });
     }
   }
 

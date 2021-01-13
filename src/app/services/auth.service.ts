@@ -12,11 +12,15 @@ const POST_AUTHENTICATED = `${API_ROOT}/registration`;
 })
 export class AuthService {
   isUserLoggedIn: boolean;
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
-  public username: string;
+  USER_NAME_SESSION_ATTRIBUTE_TOKEN = 'authenticatedUserToken';
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUserName';
+  username: string;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = !!sessionStorage.getItem(
+      this.USER_NAME_SESSION_ATTRIBUTE_TOKEN
+    );
+    this.username = sessionStorage.getItem(
       this.USER_NAME_SESSION_ATTRIBUTE_NAME
     );
   }
@@ -24,6 +28,11 @@ export class AuthService {
   get authStatus(): boolean {
     return this.isUserLoggedIn;
   }
+
+  get userName(): string {
+    return this.username;
+  }
+
   // tslint:disable-next-line:typedef
   authService(username: string, password: string) {
     let basicAuthToken = this.createBasicAuthToken(username, password);
@@ -35,9 +44,7 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
-          this.username = username;
-          this.registerSuccessfulLogin(basicAuthToken);
-          this.isUserLoggedIn = true;
+          this.registerSuccessfulLogin(basicAuthToken, username);
         })
       );
   }
@@ -45,27 +52,31 @@ export class AuthService {
     return 'Basic ' + window.btoa(`${username}:${password}`);
   }
 
-  registerSuccessfulLogin(basicAuthToken): void {
+  registerSuccessfulLogin(basicAuthToken, username : string): void {
+    sessionStorage.setItem(
+      this.USER_NAME_SESSION_ATTRIBUTE_TOKEN,
+      basicAuthToken
+    );
     sessionStorage.setItem(
       this.USER_NAME_SESSION_ATTRIBUTE_NAME,
-      basicAuthToken
+      username
     );
   }
 
   logout(): void {
-    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_TOKEN);
     this.username = null;
     this.isUserLoggedIn = false;
   }
 
   isLoggedIn(): boolean {
-    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    const user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_TOKEN);
     return user !== null;
   }
 
   getLoggedInUserName(): any {
     var usernameForView = atob(
-      sessionStorage.getItem('authenticatedUser').substr(6)
+      sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_TOKEN).substr(6)
     );
     if (usernameForView.split(':')[0] === null) {
       return '';
