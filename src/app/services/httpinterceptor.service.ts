@@ -11,8 +11,10 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpinterceptorService implements HttpInterceptor {
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
-  constructor(private authService: AuthService) {}
+  USER_NAME_SESSION_ATTRIBUTE_TOKEN : string;
+  constructor(private authService: AuthService) {
+    this.USER_NAME_SESSION_ATTRIBUTE_TOKEN = this.authService.USER_NAME_SESSION_ATTRIBUTE_TOKEN;
+  }
 
   intercept(
     req: HttpRequest<any>,
@@ -23,7 +25,7 @@ export class HttpinterceptorService implements HttpInterceptor {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: sessionStorage.getItem(
-            this.USER_NAME_SESSION_ATTRIBUTE_NAME
+            this.USER_NAME_SESSION_ATTRIBUTE_TOKEN
           ),
         }),
       });

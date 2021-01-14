@@ -35,7 +35,7 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
-          this.registerSuccessfulLogin(basicAuthToken, username);
+          this.registerSuccessfulLogin(basicAuthToken);
         })
       );
   }
@@ -43,7 +43,7 @@ export class AuthService {
     return 'Basic ' + window.btoa(`${username}:${password}`);
   }
 
-  registerSuccessfulLogin(basicAuthToken, username : string): void {
+  registerSuccessfulLogin(basicAuthToken): void {
     sessionStorage.setItem(
       this.USER_NAME_SESSION_ATTRIBUTE_TOKEN,
       basicAuthToken
