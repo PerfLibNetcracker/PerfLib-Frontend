@@ -22,30 +22,36 @@ export class BooksService {
   constructor(private http: HttpClient) {}
 
   getBooksList(): Observable<Book[]> {
+    console.log("getBooksList");
     return this.http.get(GET_BOOKS_ROUTE).pipe(tap((data: Book[]) => data));
   }
 
   getPopularBooksList(): Observable<Book[]> {
+    console.log("getPopularBooksList");
     return this.http
       .get(GET_POPULAR_BOOKS_ROUTE)
       .pipe(tap((data: Book[]) => data));
   }
 
   getRecommendedBooksList(userId: string): Observable<Book[]> {
+    console.log("getRecommendedBooksList");
     return this.http
       .get(`${GET_RECOMMEND_BOOKS_ROUTE}/${userId}`)
       .pipe(tap((data: Book[]) => data));
   }
 
   getGenresList(): Observable<Genre[]> {
+    console.log("getGenresList");
     return this.http.get(GET_GENRES_ROUTE).pipe(tap((data: Genre[]) => data));
   }
 
   getAuthorsList(): Observable<Author[]> {
+    console.log("getAuthorsList");
     return this.http.get(GET_AUTHORS_ROUTE).pipe(tap((data: Author[]) => data));
   }
 
   getBookInfo(id: string): Observable<Book> {
+    console.log("getBookInfo");
     return this.http
       .get(`${GET_BOOK_BY_ID}/${id}`)
       .pipe(tap((data: Book) => data));
