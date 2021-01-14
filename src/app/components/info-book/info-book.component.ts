@@ -80,6 +80,10 @@ export class InfoBookComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+    this.RatingService.postFeedbackToRecommends(
+      String(this.id),
+      this.rating
+    )
   }
 
   onSubmit(): void {

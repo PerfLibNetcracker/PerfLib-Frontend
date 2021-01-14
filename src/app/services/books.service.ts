@@ -19,11 +19,13 @@ const GET_RECOMMEND_BOOKS_ROUTE = `${API_ROOT}/recommend`;
   providedIn: 'root',
 })
 export class BooksService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getBooksList(): Observable<Book[]> {
     console.log("getBooksList");
-    return this.http.get(GET_BOOKS_ROUTE).pipe(tap((data: Book[]) => data));
+    return this.http.
+      get(GET_BOOKS_ROUTE)
+      .pipe(tap((data: Book[]) => data));
   }
 
   getPopularBooksList(): Observable<Book[]> {
@@ -42,12 +44,16 @@ export class BooksService {
 
   getGenresList(): Observable<Genre[]> {
     console.log("getGenresList");
-    return this.http.get(GET_GENRES_ROUTE).pipe(tap((data: Genre[]) => data));
+    return this.http
+      .get(GET_GENRES_ROUTE)
+      .pipe(tap((data: Genre[]) => data));
   }
 
   getAuthorsList(): Observable<Author[]> {
     console.log("getAuthorsList");
-    return this.http.get(GET_AUTHORS_ROUTE).pipe(tap((data: Author[]) => data));
+    return this.http
+      .get(GET_AUTHORS_ROUTE)
+      .pipe(tap((data: Author[]) => data));
   }
 
   getBookInfo(id: string): Observable<Book> {
