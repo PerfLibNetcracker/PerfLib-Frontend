@@ -13,24 +13,15 @@ const POST_AUTHENTICATED = `${API_ROOT}/registration`;
 export class AuthService {
   isUserLoggedIn: boolean;
   USER_NAME_SESSION_ATTRIBUTE_TOKEN = 'authenticatedUserToken';
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUserName';
-  username: string;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = !!sessionStorage.getItem(
       this.USER_NAME_SESSION_ATTRIBUTE_TOKEN
     );
-    this.username = sessionStorage.getItem(
-      this.USER_NAME_SESSION_ATTRIBUTE_NAME
-    );
   }
 
   get authStatus(): boolean {
     return this.isUserLoggedIn;
-  }
-
-  get userName(): string {
-    return this.username;
   }
 
   // tslint:disable-next-line:typedef
@@ -57,15 +48,10 @@ export class AuthService {
       this.USER_NAME_SESSION_ATTRIBUTE_TOKEN,
       basicAuthToken
     );
-    sessionStorage.setItem(
-      this.USER_NAME_SESSION_ATTRIBUTE_NAME,
-      username
-    );
   }
 
   logout(): void {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_TOKEN);
-    this.username = null;
     this.isUserLoggedIn = false;
   }
 

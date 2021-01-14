@@ -73,7 +73,7 @@ export class MainComponent implements OnInit, OnDestroy {
     window.addEventListener('resize', this.resizeUpdate);
     if (this.authService.authStatus) {
       this.booksService
-        .getRecommendedBooksList(this.authService.userName)
+        .getRecommendedBooksList(this.authService.getLoggedInUserName())
         .subscribe((data) => {
           this.items = data;
           this.numberOfSlides = data.length;
