@@ -23,4 +23,12 @@ export class BooksComponent implements OnInit {
       .getAuthorsList()
       .subscribe((next) => (this.authors = next));
   }
+
+  getAllBookByAuthor(authorName: string): void {
+    this.booksService.getBooksListByAuthor(authorName).subscribe((next) => (this.books = next));
+  }
+
+  getAllBookByGenres(authorName: string): void {
+    this.booksService.getBooksListByGenre(authorName).subscribe((next) => (this.books = next));
+  }
 }
