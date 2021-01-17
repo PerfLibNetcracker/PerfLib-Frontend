@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -6,7 +6,9 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <div *ngFor="let genre of genres" class="item-menu">
-        <a class="dropdown-item" href="#">{{genre.name}}</a>
+        <form (ngSubmit)="getAllBookByGenres(genre.name)">
+          <button class="dropdown-item">{{genre.name}}</button>
+        </form>
       </div>
     </div>
   </div>
@@ -17,7 +19,9 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <div *ngFor="let author of authors" class="item-menu">
-        <a class="dropdown-item" href="#">{{author.fullName}}</a>
+        <form (ngSubmit)="getAllBookByAuthor(author.fullName)">
+          <button class="dropdown-item">{{author.fullName}}</button>
+        </form>
       </div>
     </div>
   </div>
