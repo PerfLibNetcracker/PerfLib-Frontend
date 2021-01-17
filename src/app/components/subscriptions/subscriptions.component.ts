@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SubscriptionService } from '../../services/subscription.service';
 import { Observable } from 'rxjs';
 import { Book } from '../../model/Book';
-import { SubscriptionInfoDTO } from 'src/app/model/UserForBoughtDTO copy';
+import { SubscriptionInfoDTO } from 'src/app/model/SubscriptionInfoDTO';
 import { UserInfoDTO } from 'src/app/model/UserInfoDTO';
 
 @Component({

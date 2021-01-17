@@ -10,7 +10,8 @@ import { BoughtService } from '../../services/bought.service';
 import { Track } from 'ngx-audio-player';
 import { UserBookDto } from 'src/app/model/BookDTO';
 import { UserInfoDTO } from 'src/app/model/UserInfoDTO';
-import { UserBoughtBooksDTO } from 'src/app/model/UserForBoughtDTO';
+import { UserBoughtBooksDTO } from 'src/app/model/UserBoughtDTO';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-info-book',
@@ -32,9 +33,7 @@ export class InfoBookComponent implements OnInit {
 
   userDTO: Observable<UserInfoDTO>;
 
-  userForUsername: Observable<any>;
-
-  userForBoughtDTO: Observable<UserBoughtBooksDTO>;
+  userBoughtDTO: Observable<UserBoughtBooksDTO>;
 
   msaapDisplayTitle = true;
   msaapDisplayPlayList = true;
@@ -96,10 +95,9 @@ export class InfoBookComponent implements OnInit {
   reloadData(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
-      this.userForUsername = this.authService.getLoggedInUserName();
       this.userDTO = this.subscriptionService.getUserInfo();
       this.bookDTO = this.RatingService.getInfoAboutRating(String(this.id));
-      this.userForBoughtDTO = this.boughtService.getInfoAboutBoughtBooks(
+      this.userBoughtDTO = this.boughtService.getInfoAboutBoughtBooks(
         String(this.id)
       );
     }
@@ -125,6 +123,8 @@ export class InfoBookComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно 
+    //  статус покупки не обновляется прямо на странице сразу
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();

@@ -6,11 +6,11 @@
       <div *ngIf="isLoggedIn; then authorized"></div>
       <ng-template #authorized>
         <div *ngIf="bookDTO | async as bookdto">
-          <div *ngIf="!bookdto.meRated; then ratedme; else noratedme"></div>
+          <div *ngIf="!bookdto.isRated; then ratedme; else noratedme"></div>
           <ng-template #ratedme>
             <form (ngSubmit)="onSubmit()">
               <label for="username"><b>Оценить:  </b></label>
-              <input style="width: 60px" id="username" type="number" min="1" max="10" placeholder="1..10" name="login" [(ngModel)]="rated">
+              <input style="width: 60px" id="username" type="number" min="1" max="10" placeholder="1..10" name="login" [(ngModel)]="rating">
               <button style="margin-left: 10px" type="submit" class="btn btn-dark">Оценить</button>
             </form>
           </ng-template>
@@ -34,6 +34,7 @@
         <div *ngIf="userdto.hasSub; then hasSubscription"></div>
         <ng-template #hasSubscription>
           <button class="btn" style="background: #1b5f5f">
+            <!--TODO(Kuptsov) MAJOR: Кнопка не нажимается, пока ничего не нажмёшь (просто лкм по тексту считается) на странице -->
             <a style="text-decoration: none; color: white" href="https://potter-1.bib.bz/">Читать (подписка)</a></button>
           <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
                             muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions"
@@ -42,7 +43,7 @@
                             [expanded]="true"></ngx-audio-player><br>
         </ng-template>
       </div>
-      <div *ngIf="userForBoughtDTO | async as userfbdto">
+      <div *ngIf="userBoughtDTO | async as userfbdto">
         <div *ngIf="userfbdto.bought; then bought; else didntbought"></div>
         <ng-template #bought>
           <button class="btn btn-dark" type="submit"

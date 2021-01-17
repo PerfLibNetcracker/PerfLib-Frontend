@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { UserInfoDTO } from '../model/UserInfoDTO';
 import { tap } from 'rxjs/operators';
-import { SubscriptionInfoDTO } from '../model/UserForBoughtDTO copy';
+import { SubscriptionInfoDTO } from '../model/SubscriptionInfoDTO';
 
 const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;
 const GET_SUBSCRIPTION_STATUS = `${API_ROOT}/check-subscription`;
