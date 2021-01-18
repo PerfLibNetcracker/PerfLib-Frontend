@@ -8,8 +8,6 @@ export class Book {
   price: number;
   totalViews: number;
   rating: number;
-  genreId: number;
-  authorId: number;
   author: Author;
   genre: Genre;
   constructor(theRating: number) {

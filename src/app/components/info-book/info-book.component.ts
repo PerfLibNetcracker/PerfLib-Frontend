@@ -8,7 +8,7 @@ import { Book } from '../../model/Book';
 import { SubscriptionService } from '../../services/subscription.service';
 import { BoughtService } from '../../services/bought.service';
 import { Track } from 'ngx-audio-player';
-import { UserBookDto } from 'src/app/model/BookDTO';
+import { BookRatedDTO } from 'src/app/model/BookRatedDTO';
 import { UserInfoDTO } from 'src/app/model/UserInfoDTO';
 import { UserBoughtBooksDTO } from 'src/app/model/UserBoughtDTO';
 import { tap } from 'rxjs/operators';
@@ -29,7 +29,7 @@ export class InfoBookComponent implements OnInit {
 
   bookWithNewRat: Book;
 
-  bookDTO: Observable<UserBookDto>;
+  bookDTO: Observable<BookRatedDTO>;
 
   userDTO: Observable<UserInfoDTO>;
 
@@ -90,6 +90,8 @@ export class InfoBookComponent implements OnInit {
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();
+    //TODO(Kuptsov) MAJOR: Это хотфикс, тут должно быть правильное обновление содержимого
+    window.location.reload();
   }
 
   reloadData(): void {
@@ -111,9 +113,13 @@ export class InfoBookComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно 
+    //  статус покупки не обновляется прямо на странице сразу
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();
+    //TODO(Kuptsov) MAJOR: Это хотфикс, тут должно быть правильное обновление содержимого
+    window.location.reload();
   }
 
   onSubmitButtonBuyBySubscription(): void {
@@ -128,5 +134,7 @@ export class InfoBookComponent implements OnInit {
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);
     this.reloadData();
+    //TODO(Kuptsov) MAJOR: Это хотфикс, тут должно быть правильное обновление содержимого
+    window.location.reload();
   }
 }
