@@ -8,7 +8,7 @@ import { Book } from '../../model/Book';
 import { SubscriptionService } from '../../services/subscription.service';
 import { BoughtService } from '../../services/bought.service';
 import { Track } from 'ngx-audio-player';
-import { UserBookDto } from 'src/app/model/BookDTO';
+import { BookDTO } from 'src/app/model/BookDTO';
 import { UserInfoDTO } from 'src/app/model/UserInfoDTO';
 import { UserBoughtBooksDTO } from 'src/app/model/UserBoughtDTO';
 import { tap } from 'rxjs/operators';
@@ -29,7 +29,7 @@ export class InfoBookComponent implements OnInit {
 
   bookWithNewRat: Book;
 
-  bookDTO: Observable<UserBookDto>;
+  bookDTO: Observable<BookDTO>;
 
   userDTO: Observable<UserInfoDTO>;
 
@@ -123,7 +123,7 @@ export class InfoBookComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно 
+    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно
     //  статус покупки не обновляется прямо на странице сразу
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);

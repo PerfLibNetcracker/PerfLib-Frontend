@@ -11,6 +11,7 @@ const API_ROOT = `${environment.apiDataService}/api/service/search`;
 const GET_BOOKS_ROUTE = `${API_ROOT}/find-all`;
 const GET_BOOKS_BY_AUTHOR_ROUTE = `${API_ROOT}/find-all-by-author/`;
 const GET_BOOKS_BY_GENRE_ROUTE = `${API_ROOT}/find-all-by-genre/`;
+const GET_BOOKS_BY_BOOK_NAME_ROUTE = `${API_ROOT}/find-all-by-book-name/`;
 const GET_GENRES_ROUTE = `${API_ROOT}/find-all-genres`;
 const GET_AUTHORS_ROUTE = `${API_ROOT}/find-all-authors`;
 const GET_BOOK_BY_ID = API_ROOT;
@@ -40,7 +41,14 @@ export class BooksService {
   getBooksListByGenre(genreName: string): Observable<Book[]> {
     console.log("getBooksListByGenre");
     return this.http.
-    get(GET_BOOKS_BY_GENRE_ROUTE + genreName)
+      get(GET_BOOKS_BY_GENRE_ROUTE + genreName)
+      .pipe(tap((data: Book[]) => data));
+  }
+
+  getBooksListByBookName(bookName: string): Observable<Book[]> {
+    console.log("getBooksListByBookName");
+    return this.http.
+      get(GET_BOOKS_BY_BOOK_NAME_ROUTE + bookName)
       .pipe(tap((data: Book[]) => data));
   }
 

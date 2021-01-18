@@ -1,6 +1,6 @@
 import { User } from './User';
 
-export interface UserBookDto {
+export interface BookDTO {
   id: number;
   name: string;
   isRated: boolean;

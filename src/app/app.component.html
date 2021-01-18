@@ -20,8 +20,9 @@
     <li><a href=""> Популярное</a></li>
     <li><a href=""> Новинки</a></li>
   </ul>
-  <form class="d-flex searchForm">
-    <input class="searchInput" type="search" value="" placeholder="Поиск">
+  <form (ngSubmit)="getSearchFieldAndSendInTransfer()" class="d-flex searchForm" >
+
+    <input class="searchInput" type="search" value="" placeholder="Поиск" name="search" [(ngModel)]="searchField" >
     <button style="width: 40px;" class="submitSearchButton" type="submit" name="submitSearchButton"><img alt="Найти" width="30px"
                                                                                                          src="./assets/images/search.png">
     </button>
@@ -53,3 +54,4 @@
     <p><a>PerfLib © 2020. Все права защищены.</a></p>
   </div>
 </footer>
+
