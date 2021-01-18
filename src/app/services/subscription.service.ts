@@ -19,8 +19,7 @@ export class SubscriptionService {
 
   getUserInfo(): Observable<UserInfoDTO> {
     return this.http
-      .get(GET_SUBSCRIPTION_STATUS, { withCredentials: true })
-      .pipe(tap((data: UserInfoDTO) => data));
+      .get<UserInfoDTO>(GET_SUBSCRIPTION_STATUS, { withCredentials: true });
   }
   addSubscription(days: string): Observable<any> {
     return this.http.post(`${POST_SUBSCRIPTION}/${days}`, {
@@ -29,7 +28,6 @@ export class SubscriptionService {
   }
   getInfoAboutSubscription(): Observable<SubscriptionInfoDTO> {
     return this.http
-      .get(GET_INFO_ABOUT_SUBSCRIPTION, { withCredentials: true })
-      .pipe(tap((data: SubscriptionInfoDTO) => data));
+      .get<SubscriptionInfoDTO>(GET_INFO_ABOUT_SUBSCRIPTION, { withCredentials: true });
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { BookDTO } from '../model/BookDTO';
+import { BookRatedDTO } from '../model/BookRatedDTO';
 import { tap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
@@ -19,10 +19,10 @@ export class RatingService {
   constructor(private http: HttpClient,
     private authService: AuthService) { }
 
-  getInfoAboutRating(id: string): Observable<BookDTO> {
+  getInfoAboutRating(id: string): Observable<BookRatedDTO> {
     return this.http
       .get(`${GET_RATED_BOOKS_BY_USER}/${id}`, { withCredentials: true })
-      .pipe(tap((data: BookDTO) => data));
+      .pipe(tap((data: BookRatedDTO) => data));
   }
 
   setNewRatingForBook(book: object, id: string): Observable<object> {
