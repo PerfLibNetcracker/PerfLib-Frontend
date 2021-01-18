@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { UserInfoDTO } from '../model/UserInfoDTO';
 import { tap } from 'rxjs/operators';
-import { SubscriptionInfoDTO } from '../model/UserForBoughtDTO copy';
+import { SubscriptionInfoDTO } from '../model/SubscriptionInfoDTO';
 
 const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;
 const GET_SUBSCRIPTION_STATUS = `${API_ROOT}/check-subscription`;
@@ -19,8 +19,7 @@ export class SubscriptionService {
 
   getUserInfo(): Observable<UserInfoDTO> {
     return this.http
-      .get(GET_SUBSCRIPTION_STATUS, { withCredentials: true })
-      .pipe(tap((data: UserInfoDTO) => data));
+      .get<UserInfoDTO>(GET_SUBSCRIPTION_STATUS, { withCredentials: true });
   }
   addSubscription(days: string): Observable<any> {
     return this.http.post(`${POST_SUBSCRIPTION}/${days}`, {
@@ -29,7 +28,6 @@ export class SubscriptionService {
   }
   getInfoAboutSubscription(): Observable<SubscriptionInfoDTO> {
     return this.http
-      .get(GET_INFO_ABOUT_SUBSCRIPTION, { withCredentials: true })
-      .pipe(tap((data: SubscriptionInfoDTO) => data));
+      .get<SubscriptionInfoDTO>(GET_INFO_ABOUT_SUBSCRIPTION, { withCredentials: true });
   }
 }

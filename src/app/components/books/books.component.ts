@@ -19,8 +19,14 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.getBooksList().subscribe((next) => (this.books = next));
     this.booksService.getGenresList().subscribe((next) => (this.genres = next));
-    this.booksService
-      .getAuthorsList()
-      .subscribe((next) => (this.authors = next));
+    this.booksService.getAuthorsList().subscribe((next) => (this.authors = next));
+  }
+
+  getAllBookByAuthor(authorName: string): void {
+    this.booksService.getBooksListByAuthor(authorName).subscribe((next) => (this.books = next));
+  }
+
+  getAllBookByGenres(authorName: string): void {
+    this.booksService.getBooksListByGenre(authorName).subscribe((next) => (this.books = next));
   }
 }

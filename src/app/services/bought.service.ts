@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserBoughtBooksDTO } from '../model/UserForBoughtDTO';
+import { UserBoughtBooksDTO } from '../model/UserBoughtDTO';
 import { tap } from 'rxjs/operators';
 
 const API_ROOT = `${environment.apiAuthService}/api/service/authentication/authenticated`;

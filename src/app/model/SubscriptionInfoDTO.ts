@@ -1,4 +1,4 @@
 export interface SubscriptionInfoDTO {
   endTime: string;
-  freeBook: number;
+  freeBookCount: number;
 }
