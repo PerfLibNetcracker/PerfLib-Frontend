@@ -10,6 +10,7 @@ export class Book {
   rating: number;
   author: Author;
   genre: Genre;
+  releaseYear: number;
   constructor(theRating: number) {
     this.rating = theRating;
   }
