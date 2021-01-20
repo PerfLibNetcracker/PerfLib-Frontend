@@ -113,7 +113,7 @@ export class InfoBookComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно 
+    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно
     //  статус покупки не обновляется прямо на странице сразу
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);
@@ -129,7 +129,7 @@ export class InfoBookComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно 
+    // TODO(Kuptsov) MAJOR: Это обновление либо не работает, либо работает как-то неправильно
     //  статус покупки не обновляется прямо на странице сразу
     this.reloadData();
     this.router.navigate([`/info-book/${this.id}`]);

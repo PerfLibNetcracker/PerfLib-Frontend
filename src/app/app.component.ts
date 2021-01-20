@@ -1,4 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {BooksService} from "./services/books.service";
+import {Book} from "./model/Book";
+import {TransferService} from "./services/transfer.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +11,16 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit, OnDestroy {
   isMobileWidth = false;
+  searchField: string;
+
+  constructor(private booksService: BooksService, private transferService: TransferService,
+              private router: Router) {}
+
+  getSearchFieldAndSendInTransfer(): void {
+    this.transferService.setData(this.searchField);
+    this.router.navigateByUrl('/nav-user', {skipLocationChange: true}).then(() => this.router.navigate(['books']));
+  }
+
   ngOnInit(): void {
     this.checkAdaptiveWidth();
     window.addEventListener('resize', this.checkAdaptiveWidth);
@@ -18,4 +32,6 @@ export class AppComponent implements OnInit, OnDestroy {
   checkAdaptiveWidth(): void {
     this.isMobileWidth = window.innerWidth <= 900;
   }
+
+
 }

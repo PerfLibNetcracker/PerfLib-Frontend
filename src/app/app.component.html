@@ -9,19 +9,20 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" routerLink="">Главная</a>
         <a class="dropdown-item" routerLink="/books">Книги</a>
-        <a class="dropdown-item" routerLink="/books">Популярное</a>
-        <a class="dropdown-item" routerLink="/books">Новинки</a>
+        <a class="dropdown-item" routerLink="/books/popular">Популярное</a>
+        <a class="dropdown-item" routerLink="/books/new">Новинки</a>
       </div>
     </div>
   </div>
   <ul class="desktopMenu">
-    <li><a href=""> <span style="font-weight: bold"> Главная </span></a></li>
+    <li><a routerLink="" routerLinkActive="active"> <span style="font-weight: bold"> Главная </span></a></li>
     <li><a routerLink="/books" routerLinkActive="active"> Книги </a></li>
-    <li><a href=""> Популярное</a></li>
-    <li><a href=""> Новинки</a></li>
+    <li><a routerLink="/books/popular" routerLinkActive="active"> Популярное</a></li>
+    <li><a routerLink="/books/new" routerLinkActive="active"> Новинки</a></li>
   </ul>
-  <form class="d-flex searchForm">
-    <input class="searchInput" type="search" value="" placeholder="Поиск">
+  <form (ngSubmit)="getSearchFieldAndSendInTransfer()" class="d-flex searchForm" >
+
+    <input class="searchInput" type="search" value="" placeholder="Поиск" name="search" [(ngModel)]="searchField" >
     <button style="width: 40px;" class="submitSearchButton" type="submit" name="submitSearchButton"><img alt="Найти" width="30px"
                                                                                                          src="./assets/images/search.png">
     </button>
@@ -53,3 +54,4 @@
     <p><a>PerfLib © 2020. Все права защищены.</a></p>
   </div>
 </footer>
+

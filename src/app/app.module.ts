@@ -17,6 +17,7 @@ import { SubscriptionsComponent } from './components/subscriptions/subscriptions
 import { BuyFormComponent } from './components/buy-form/buy-form.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgxAudioPlayerModule,
     BrowserAnimationsModule,
+    MatTooltipModule,
   ],
   providers: [
     {
