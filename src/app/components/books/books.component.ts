@@ -3,8 +3,8 @@ import { BooksService } from '../../services/books.service';
 import { Book } from '../../model/Book';
 import { Genre } from '../../model/Genre';
 import { Author } from '../../model/Author';
-import {TransferService} from "../../services/transfer.service";
-import {Router} from "@angular/router";
+import {TransferService} from '../../services/transfer.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
 
 
   constructor(private booksService: BooksService, private transferService: TransferService,
-              private router: Router) {
+              private route: ActivatedRoute) {
   }
 
 
@@ -37,16 +37,13 @@ export class BooksComponent implements OnInit {
     }
   }
 
-  getAllBookByAuthor(authorName: string): void {
-    this.booksService.getBooksListByAuthor(authorName).subscribe((next) => (this.books = next));
-  }
 
   getAllBookByGenres(authorName: string): void {
     this.booksService.getBooksListByGenre(authorName).subscribe((next) => (this.books = next));
   }
 
   getAllBookByBookName(bookName: string): void {
-    this.booksService.getBooksListByBookName(bookName).subscribe((next) => (this.books = next));
+    this.booksService.getBooksListByBookNameOrAuthorName(bookName).subscribe((next) => (this.books = next));
     console.log(this.books);
   }
 

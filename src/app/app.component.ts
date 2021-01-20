@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {BooksService} from "./services/books.service";
 import {Book} from "./model/Book";
 import {TransferService} from "./services/transfer.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   getSearchFieldAndSendInTransfer(): void {
     this.transferService.setData(this.searchField);
-    this.router.navigate(['/books']);
+    this.router.navigateByUrl('/nav-user', {skipLocationChange: true}).then(() => this.router.navigate(['books']));
   }
 
   ngOnInit(): void {

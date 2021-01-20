@@ -12,19 +12,6 @@
       </div>
     </div>
   </div>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-      Авторы
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <div *ngFor="let author of authors" class="item-menu">
-        <form (ngSubmit)="getAllBookByAuthor(author.fullName)">
-          <button class="dropdown-item">{{author.fullName}}</button>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 <div class="globalBookContainer">
   <div *ngFor="let book of books" class="book">
