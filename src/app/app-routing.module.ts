@@ -10,6 +10,7 @@ import { BuyFormComponent } from './components/buy-form/buy-form.component';
 
 const routes: Routes = [
   { path: 'books', component: BooksComponent },
+  { path: 'books/:type', component: BooksComponent },
   { path: '', component: MainComponent },
   { path: 'info-book/:id', component: InfoBookComponent },
   { path: 'registration', component: RegistrationComponent },

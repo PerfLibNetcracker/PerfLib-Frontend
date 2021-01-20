@@ -1,10 +1,10 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { BooksService } from '../../services/books.service';
 import { Book } from '../../model/Book';
 import { Genre } from '../../model/Genre';
 import { Author } from '../../model/Author';
-import {TransferService} from '../../services/transfer.service';
-import {ActivatedRoute} from '@angular/router';
+import { TransferService } from '../../services/transfer.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -12,6 +12,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit {
+  queryType: string;
   books: Book[];
   genres: Genre[];
   authors: Author[];
@@ -19,7 +20,8 @@ export class BooksComponent implements OnInit {
 
 
   constructor(private booksService: BooksService, private transferService: TransferService,
-              private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
+    this.queryType = this.route.snapshot.params.type;
   }
 
 
@@ -32,6 +34,10 @@ export class BooksComponent implements OnInit {
     if (this.searchField != null) {
       console.log(this.searchField);
       this.getAllBookByBookName(this.searchField);
+    } else if (this.queryType === 'popular') {
+      this.booksService.getPopularBooksList().subscribe((next) => (this.books = next));
+    } else if (this.queryType === 'new') {
+      this.booksService.getNewBooksList().subscribe((next) => (this.books = next));
     } else {
       this.booksService.getBooksList().subscribe((next) => (this.books = next));
     }

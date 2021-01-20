@@ -36,7 +36,7 @@
         <ng-template #hasSubscription>
           <button class="btn" style="background: #1b5f5f">
             <!--TODO(Kuptsov) MAJOR: Кнопка не нажимается, пока ничего не нажмёшь (просто лкм по тексту считается) на странице -->
-            <a style="text-decoration: none; color: white" href="https://potter-1.bib.bz/">Читать (подписка)</a></button>
+            <a style="text-decoration: none; color: white" href="https://potter-1.bib.bz/">Читать по подписке</a></button>
           <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
                             muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions"
                             [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider"
@@ -50,14 +50,18 @@
           <button class="btn btn-dark" type="submit"
                   onclick="location.href='https://avidreaders.ru/api/get.php?b=13640&f=pdf'">Скачать
           </button>
+          <button matTooltip="У вас уже куплена книга, вы можете её скачать по кнопке выше" style="background: gray " class="btn" type="disabled">Купить</button>
         </ng-template>
         <ng-template #didntbought>
           <div *ngIf="userDTO | async as userdto1">
-            <div *ngIf="userdto1.hasFreeBook; then hasFreeBook"></div>
+            <div *ngIf="userdto1.hasFreeBook; then hasFreeBook; else noFreeBook;"></div>
             <ng-template #hasFreeBook>
               <form (ngSubmit)="onSubmitButtonBuyBySubscription()">
-                <button class="btn" style="background: #1b5f5f;" type="submit">Бесплатно (подписка)</button>
+                <button class="btn" style="background: indigo;" type="submit">Купить по подписке</button>
               </form>
+            </ng-template>
+            <ng-template #noFreeBook>
+              <button matTooltip="У вас закончилась подписка, приобретите новую для получения бесплатных книг" class="btn" style="background: gray;" type="disabled">Купить по подписке</button>
             </ng-template>
             <form style="width: 100%; display: flex; justify-items: center; justify-content: center;" (ngSubmit)="onSubmitButtonBuy()">
               <button style="background: indigo " class="btn" type="submit">Купить</button>
