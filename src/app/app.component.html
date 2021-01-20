@@ -7,21 +7,20 @@
         Меню
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink="">Главная</a>
+        <a (click)="routeToMain()" class="dropdown-item" routerLink="">Главная</a>
         <a class="dropdown-item" routerLink="/books">Книги</a>
-        <a class="dropdown-item" routerLink="/books/popular">Популярное</a>
-        <a class="dropdown-item" routerLink="/books/new">Новинки</a>
+        <a (click)="routeToPopularBooks()" class="dropdown-item" routerLink="/books/popular">Популярное</a>
+        <a (click)="routeToNewBooks()" class="dropdown-item" routerLink="/books/new">Новинки</a>
       </div>
     </div>
   </div>
   <ul class="desktopMenu">
-    <li><a routerLink="" routerLinkActive="active"> <span style="font-weight: bold"> Главная </span></a></li>
+    <li><a (click)="routeToMain()" routerLink="" routerLinkActive="active"> <span style="font-weight: bold"> Главная </span></a></li>
     <li><a routerLink="/books" routerLinkActive="active"> Книги </a></li>
-    <li><a routerLink="/books/popular" routerLinkActive="active"> Популярное</a></li>
-    <li><a routerLink="/books/new" routerLinkActive="active"> Новинки</a></li>
+    <li><a (click)="routeToPopularBooks()" routerLink="/books/popular" routerLinkActive="active"> Популярное</a></li>
+    <li><a (click)="routeToNewBooks()" routerLink="/books/new" routerLinkActive="active"> Новинки</a></li>
   </ul>
-  <form (ngSubmit)="getSearchFieldAndSendInTransfer()" class="d-flex searchForm" >
-
+  <form (ngSubmit)="getSearchFieldAndRouteToAllBooks()" class="d-flex searchForm" >
     <input class="searchInput" type="search" value="" placeholder="Поиск" name="search" [(ngModel)]="searchField" >
     <button style="width: 40px;" class="submitSearchButton" type="submit" name="submitSearchButton"><img alt="Найти" width="30px"
                                                                                                          src="./assets/images/search.png">

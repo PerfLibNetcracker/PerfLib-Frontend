@@ -16,9 +16,21 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private booksService: BooksService, private transferService: TransferService,
               private router: Router) {}
 
-  getSearchFieldAndSendInTransfer(): void {
+  getSearchFieldAndRouteToAllBooks(): void {
     this.transferService.setData(this.searchField);
     this.router.navigateByUrl('/nav-user', {skipLocationChange: true}).then(() => this.router.navigate(['books']));
+  }
+
+  routeToMain(): void {
+    this.router.navigateByUrl('/nav-user', {skipLocationChange: true}).then(() => this.router.navigate(['']));
+  }
+
+  routeToPopularBooks(): void {
+    this.router.navigateByUrl('/nav-user', {skipLocationChange: true}).then(() => this.router.navigate(['books/popular']));
+  }
+
+  routeToNewBooks(): void {
+    this.router.navigateByUrl('/nav-user', {skipLocationChange: true}).then(() => this.router.navigate(['books/new']));
   }
 
   ngOnInit(): void {
